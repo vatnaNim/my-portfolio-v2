@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@100..900&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Noto+Sans+Khmer:wght@100..900&family=Oswald:wght@200..700&display=swap');
+
+body {
+    font-family: 'Oswald', 'Noto Sans Khmer', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+
+.logo {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;       
+  -ms-overflow-style: none;    
+}
+
+.no-scrollbar::-webkit-scrollbar { 
+  display: none;               
+}
+
+@-webkit-keyframes typing {
+  from { width: 0; }
+  to { width: 13ch; }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 13ch; }
+}
+
+@-webkit-keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+@keyframes blink-caret {
+  50% { border-color: transparent; }
+}
+
+.typing {
+  border-right: .1em solid black;
+  width: 13ch; /* 21 characters wide */
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: typing 3s steps(13, end), 
+                     blink-caret .5s step-end infinite alternate;
+  animation: typing 2s steps(13, end), 
+             blink-caret .5s step-end infinite alternate;
+}

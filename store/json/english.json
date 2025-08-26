@@ -1,0 +1,15 @@
+{
+	"home": "Home",
+	"about": "About",
+	"achievement": "Achievements",
+	"experience": "Experience",
+	"projects": "Projects",
+	"contact": "Contact",
+	"welcome": "Welcome",
+	"description": "This is a sample description.",
+	"languageBtnEn": "Switch to English",
+	"languageBtnKh": "Switch to Khmer",
+	"lightModeBtn": "Switch to Light Mode",
+	"darkmodeBtn": "Switch to Dark Mode",
+	"quickNav": "Quick Navigation"
+}
