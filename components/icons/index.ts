@@ -58,6 +58,11 @@ import Eye from "./eye.vue";
 import Pdf from "./pdf.vue";
 import ForwardArrow from "./forward-arrow.vue";
 import Cancel from "./cancel.vue";
+import Building from "./building.vue";
+import Thunder from "./thunder.vue";
+import Star from "./star.vue";
+import Open from "./open.vue";
+import Explore from "./explore.vue";
 
 export {
     Html,
@@ -119,5 +124,10 @@ export {
     Eye,
     Pdf,
     ForwardArrow,
-    Cancel
+    Cancel,
+    Building,
+    Thunder,
+    Star,
+    Open,
+    Explore
 }

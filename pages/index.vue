@@ -52,9 +52,9 @@ const callPhone = () => {
         <Home/>
         <About/>
         <Achievement/>
-        <!-- <experience/>
-        <project/>
-        <contact/>  -->
+        <Experience/>
+        <Projects/>
+        <Contact/>
     </div>
 </template>
 
@@ -62,7 +62,10 @@ const callPhone = () => {
 import { 
     Home,
     About,
-    Achievement
+    Achievement,
+    Experience,
+    Projects,
+    Contact
 } from '~/components/layouts';
 </script>
 

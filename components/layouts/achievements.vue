@@ -185,10 +185,6 @@
         </div>
         <ImageModal
             :open="openViewmodal"
-            :title="selectedCert?.title"
-            :image-url="selectedCert?.imageUrl"
-            :detail="selectedCert?.detail"
-            :year="selectedCert?.year"
             @toggle="toggleView"
         />
     </div>

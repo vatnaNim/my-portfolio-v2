@@ -1,79 +1,74 @@
 <template>
     <div
-        class="w-full min-h-[90vh] px-8 pt-6 space-y-4">
+        class="px-8 py-4 flex flex-col justify-center items-center gap-y-4">
         <div 
-            class="flex flex-col gap-y-3 items-center justify-center">
+            class="leading-4 text-center">
             <h2 
                 class="text-3xl logo font-medium tracking-wide text-red-700 dark:text-red-600">
-                Featured Work
+                My projects
             </h2>
-            <div class="border-2 min-w-32 border-gray-300 dark:border-gray-600"></div>
             <p
-                class="max-w-[500px] text-wrap text-md font-semibold text-gray-500 text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, accusantium neque. Incidunt quae quaerat ab corporis 
+                class="text-md font-semibold text-gray-500">
+                Build for love, grow with passion.
             </p>
+            <div
+                class="w-64 border border-red-700 mt-5"></div>
         </div>
-        <div
-            class="max-w-full flex justify-center ">
+        <div 
+            class="space-y-4 text-center">
+            <h3 
+                class="logo text-xl underline">
+                Realtime Project
+            </h3>
             <div 
                 class="grid grid-cols-3 gap-x-4 gap-y-4">
                 <ProjectCard
-                    v-for="(item, idx) in project.slice(0, 6)"  
-                    :key="idx"
+                    v-for="(item) in project.filter(item => item.category === 'real work project')"  
+                    :key="item.id"
                     :image="item.mainImage"
                     :title="item.title"
                     :detail="item.detail"
                     :work-on="item.workingOn"  
                     :git-hub-link="item.gitHubLink"
                     :demo-image="item.demoImage"
-                    :techology="item.techology"
-                         
+                    :techology="item.techology" 
                 />
             </div>
         </div>
-        <div    
-            class="pt-3 flex flex-col items-center gap-y-2">
-            <p
-                class=" text-md font-semibold text-black text-center">
-                Interested in seeing more of my work?
-            </p>
-            <span>
-                <UButton
-                    to="/projects"
-                    color="black"
-                    variant="solid"
-                    size="md"
-                    class="transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110 duration-300">
-                    <span>
-                        <Eye 
-                            class="w-5 h-5"
-                        />
-                    </span>
-                    <span
-                        class="flex items-center uppercase">
-                        <span>View all Project</span>
-                        <Open class="w-4 h-4"/>
-                    </span>
-                    
-                </UButton>
-            </span>
+        <div 
+            class="space-y-4 text-center">
+            <h3 
+                class="logo text-xl underline">
+                My Project
+            </h3>
+            <div 
+                class="grid grid-cols-3 gap-x-4 gap-y-4">
+                <ProjectCard
+                    v-for="(item) in project.filter(item => item.category === 'personal project')"  
+                    :key="item.id"
+                    :image="item.mainImage"
+                    :title="item.title"
+                    :detail="item.detail"
+                    :work-on="item.workingOn"  
+                    :git-hub-link="item.gitHubLink"
+                    :demo-image="item.demoImage"
+                    :techology="item.techology" 
+                />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { 
-    ProjectCard
-} from '../ui';
-import { 
-    Eye,
-    Open
-} from '../icons';
+    ProjectCard 
+} from '~/components/ui';
+
 
 const project = [
     {
         id: 1,
-        mainImage: '',
+        mainImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s',
         title: 'Personal Portofio V1.0',
         workingOn: 'frontend',
         category: 'personal project',
@@ -85,9 +80,11 @@ const project = [
             "Material UI",
             "Tailwind"
         ],
-        gitHubLink: "fd",
+        gitHubLink: "",
         domainLink: "https://vatna-portfolio.vercel.app/",
         demoImage: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"
         ],
     },
     {
@@ -229,6 +226,113 @@ const project = [
         ],
         gitHubLink: "",
         domainLink: "",
+        demoImage: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"
+        ],
+    },
+    {
+        id: 9,
+        mainImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s',
+        title: 'Gtech Admin',
+        category: 'real work project',
+        workingOn: 'Frontend',
+        detail: 'Developed the frontend interface of the Gtech Admin panel, implementing responsive UI components and integrating with backend APIs. Focused on debugging, improving user experience, and ensuring seamless interaction with the admin dashboard.',
+        techology: [
+            "Nuxt",
+            "Vue",
+            "Nuxt Ui",
+            "Javascript",
+            "Typescript",
+            "Tailwind"
+        ],
+        gitHubLink: "",
+        domainLink: "",
+        demoImage: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"
+        ],
+    },
+    {
+        id: 10,
+        mainImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s',
+        title: 'Gtech Cambodia',
+        category: 'real work project',
+        workingOn: 'Frontend',
+        detail: 'Worked on maintaining and improving the Gtech Cambodia website. Implemented API integrations, optimized frontend performance, and ensured cross-browser compatibility. Focused on clean UI and smooth interactions for end-users.',
+        techology: [
+            "Next.js",
+            "Javascript",
+            "Typescript",
+            "Tailwind"
+        ],
+        gitHubLink: "",
+        domainLink: "https://www.gtechcambodia.com/",
+        demoImage: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"
+        ],
+    },
+    {
+        id: 11,
+        mainImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s',
+        title: 'sambot sambot digital admin',
+        category: 'real work project',
+        workingOn: 'Frontend',
+        detail: 'Built the frontend dashboard for Sambot Digital Admin, creating interactive components and ensuring smooth integration with backend APIs. Focused on improving user experience and providing an efficient workflow for digital management.',
+        techology: [
+            "Nuxt.js",
+            "vue",
+            "Nuxt ui",
+            "Javascript",
+            "Typescript",
+            "Tailwind"
+        ],
+        gitHubLink: "",
+        domainLink: "https://www.gtechcambodia.com/",
+        demoImage: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"
+        ],
+    },
+    {
+        id: 12,
+        mainImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s',
+        title: 'sambot sambot digital tamplate',
+        category: 'real work project',
+        workingOn: 'Frontend',
+        detail: 'Developed reusable frontend templates for the Sambot Digital Mail system. Followed UI guidelines to create a digital mail platform for customers to send invitations for ceremonies such as weddings, birthdays, and other events.',
+        techology: [
+            "Nuxt.js",
+            "vue",
+            "Javascript",
+            "Typescript",
+            "Tailwind"
+        ],
+        gitHubLink: "",
+        domainLink: "",
+        demoImage: [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"
+        ],
+    },
+    {
+        id: 13,
+        mainImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s',
+        title: 'Samphat Motobike Pos System',
+        category: 'real work project',
+        workingOn: 'Frontend',
+        detail: 'Developed the frontend interface for the Samphat Motobike POS System. Implemented responsive layouts, interactive components, and smooth navigation to enhance the experience for staff managing orders and inventory.',
+        techology: [
+            "Nuxt.js",
+            "Vue",
+            "Nuxt ui",
+            "Javascript",
+            "Typescript",
+            "Tailwind"
+        ],
+        gitHubLink: "",
+        domainLink: "https://www.gtechcambodia.com/",
         demoImage: [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc9APxkj0xClmrU3PpMZglHQkx446nQPG6lA&s"

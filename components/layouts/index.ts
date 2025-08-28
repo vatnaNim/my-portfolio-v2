@@ -3,7 +3,7 @@ import Home from "./home.vue";
 import About from "./about.vue";
 import Achievement from "./achievements.vue";
 import Experience from "./experience.vue";
-import Project from "./projects.vue";
+import Projects from "./projects.vue";
 import Contact from "./contact.vue";
 
 
@@ -13,6 +13,6 @@ export {
     About,
     Achievement,
     Experience,
-    Project,
+    Projects,
     Contact
 };
