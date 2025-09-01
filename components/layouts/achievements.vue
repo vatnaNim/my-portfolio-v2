@@ -2,8 +2,9 @@
     <div
         class="w-full min-h-[90vh] px-8 space-y-4">
         <h2
-            class="text-4xl logo tracking-wide font-medium text-red-700 dark:text-red-600">
-            Education & Certifications
+            class="text-4xl font-medium text-red-700 dark:text-red-600"
+            :class="translations.language === 'en'? 'logo  tracking-wide' : ' tracking-normal'">
+            {{ t('education') }} {{ t('&') }} {{ t('certifications') }}
         </h2>
         <div
             class="flex gap-x-4 ">
@@ -18,8 +19,9 @@
                         />
                     </span>
                     <span
-                        class="text-2xl tracking-wide font-semibold uppercase">
-                        Education
+                        class=" tracking-wide font-semibold uppercase"
+                        :class="translations.language === 'en'? 'text-2xl' : 'text-3xl'">
+                        {{ t('education') }}
                     </span>
                 </h3>
                 <div 
@@ -74,8 +76,9 @@
                         />
                     </span>
                     <span
-                        class="text-2xl tracking-wide font-semibold uppercase">
-                        Certificates
+                        class=" tracking-wide font-semibold uppercase"
+                        :class="translations.language === 'en'? 'text-2xl' : 'text-3xl'">
+                        {{ t('certifications') }}
                     </span>
                 </h3>
                 <div 
@@ -108,13 +111,14 @@
                             <u-button
                                 size="sm"
                                 color="black"
-                                @click="toggleView(cert, true)">
+                                 :key="cert.id"
+  @click="viewCert(cert)">
                                 <Eye 
                                     class="w-5 h-5"
                                 />
                                 <span 
                                     class="text-sm tracking-wide">
-                                    View
+                                    {{ t('view') }}
                                 </span>
                             </u-button>
                             <u-button
@@ -185,7 +189,8 @@
         </div>
         <ImageModal
             :open="openViewmodal"
-            @toggle="toggleView"
+            :selected="selectedCert"
+            @update:open="openViewmodal = $event"
         />
     </div>
 </template>
@@ -207,83 +212,86 @@ import {
 import { 
     ImageModal 
 } from '../ui';
+import { 
+    useTranslation 
+} from '@/composables/useTranslation';
 
+const { translations, t } = useTranslation();
 
 const page: Ref<number> = ref<number>(1);
-const openViewmodal: Ref<boolean> = ref(false);
-const selectedCert: Ref<any> = ref(null);
+const openViewmodal: Ref<boolean> = ref<boolean>(false);
+const selectedCert: Ref<any> = ref<any>(null);
 
-const edcationDb = [
+const edcationDb = computed(() => [
     {
         id: 1,
-        schoolName: "Royal University of Phnom Penh",
-        degree: "Bachelor of Computer Science (G-25)",
-        year: "Graduated 2022 – 2025",
+        schoolName: t('royelUniversity'),
+        degree: t('royelmajor'),
+        year: t('royelYear'),
         logo: Rupp
     },
     {
         id: 2, 
-        schoolName: "Toul Tumpong High School, Phnom Penh",
-        degree: "High School",
-        year: "Bacll 2019 – 2020",
+        schoolName: t('toulTompong'),
+        degree: t('toulTompongmajor'),
+        year: t('toulTompongYear'),
         logo: '',
     },
     {
         id: 3, 
-        schoolName: "Beltei International School, Phnom Penh",
-        degree: "General English Languages (ESL 12)",
-        year: "Graduated 2017 – 2020",
+        schoolName: t('beltei'),
+        degree: t('belteimajor'),
+        year: t('belteiYear'),
         logo: Beltei,
     }
-]
+]);
 
-const certificates = [
+const certificates = computed(() => [
     {
         id: 1,
-        title: "Royal University of Phnom Penh",
-        detail: "Bachelor of Computer Science ",
-        year: "2025",
-        link: ""
+        title: t('royelUniversity'),
+        detail: t('royelmajor'),
+        year: t('royelCertYear'),
     },
     {
         id: 2,
-        title: "Toul Tumpong High School, Phnom Penh",
-        detail: "Bacll",
-        year: " 2019 – 2020",
+        title: t('toulTompong'),
+        detail: t('bacll'),
+        year: t('highschoolYear'),
         imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756130708/BACLL_urrdcm.jpg"
     },
     {
         id: 3,
-        title: "Beltei International School, Phnom Penh",
-        detail: "General English Languages (ESL 12)",
-        year: "2020",
+        title: t('beltei'),
+        detail: t('belteimajor'),
+        year: t('year12'),
         imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756130909/ESL_awas3i.jpg"
     },
     {
         id: 4,
-        title: "Beltei International School, Phnom Penh",
-        detail: "General English Languages (ESL 6)",
-        year: "2017",
+        title:  t('beltei'),
+        detail: t('belteimajor6'),
+        year: t('year6'),
         imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756157462/IMG_5820_kywq3w.webp"
     },
     {
         id: 5,
-        title: "Computer Vocational Training Organization",
+        title: t('computerSchool'),
         detail: "Miscrosoft Officer",
-        year: "2022",
+        year: t('computerYear'),
         imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756130941/computer_kpxr13.jpg"
     },
-];
+])
 
 const pageSize: number = 3;
 const paginatedCertificates = computed(() => {
     const start = (page.value - 1) * pageSize;
-    return certificates.slice(start, start + pageSize)
+    return certificates.value.slice(start, start + pageSize)
 });
 
-const toggleView = (cert: any, state: boolean): void => {
+const viewCert = (cert: any): void => {
     selectedCert.value = cert;
-    openViewmodal.value = state;
+    openViewmodal.value = true; 
 };
 </script>
 

@@ -5,8 +5,7 @@ import Achievement from "./achievements.vue";
 import Experience from "./experience.vue";
 import Projects from "./projects.vue";
 import Contact from "./contact.vue";
-
-
+import Footer from "./footer.vue";
 export {
     Navigation,
     Home,
@@ -14,5 +13,6 @@ export {
     Achievement,
     Experience,
     Projects,
-    Contact
+    Contact,
+    Footer
 };

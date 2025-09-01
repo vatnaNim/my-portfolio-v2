@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <UTooltip
-                    text="Close"
+                    :text="t('close')"
                     :popper="{ placement: 'top', arrow: true }">
                     <UButton
                         size="sm"
@@ -102,7 +102,7 @@
                             class="flex items-center gap-x-0.5 pb-1">
                             <Thunder class="w-6 h-6 text-red-700 dark:text-red-600"/>
                             <span class="text-md font-medium ">
-                                Key Achivment
+                                {{ t('keyAchi') }}
                             </span>
                         </span>
                         <ul
@@ -117,7 +117,7 @@
                             class="flex items-center gap-x-0.5 pb-1">
                             <Experience class="w-6 h-6 text-red-700 dark:text-red-600"/>
                             <span class="text-md font-medium capitalize">
-                                responsible & work
+                                {{ t('repAndWork') }}
                             </span>
                         </span>
                         <ul
@@ -145,6 +145,12 @@ import {
 import { 
     Modal 
 } from '../loadings';
+import { 
+    useTranslation 
+} from '@/composables/useTranslation';
+
+const { t, translations } = useTranslation();
+
 const props = withDefaults(
     defineProps<{
         open: boolean;

@@ -9,5 +9,5 @@ export {
     Gtech,
     Kiwi,
     Pedro,
-    Rupp
+    Rupp,
 }

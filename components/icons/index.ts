@@ -63,6 +63,12 @@ import Thunder from "./thunder.vue";
 import Star from "./star.vue";
 import Open from "./open.vue";
 import Explore from "./explore.vue";
+import Send from "./send.vue";
+import Success from "./success.vue";
+import Unsuccess from "./unsuccess.vue";
+import Mailinfo from "./mailinfo.vue";
+import X from "./x.vue";
+import Pray from "./pray.vue";
 
 export {
     Html,
@@ -129,5 +135,11 @@ export {
     Thunder,
     Star,
     Open,
-    Explore
+    Explore,
+    Send,
+    Success,
+    Unsuccess,
+    Mailinfo,
+    X,
+    Pray
 }

@@ -1,221 +1,207 @@
 <template>
-    <div
-        class="w-full min-h-[90vh] flex gap-x-10 px-8">
+    <div 
+        class="w-full min-h-screen px-12 space-y-10">
         <div 
-            class="w-[50%]">
-            <h3
-                class="text-md font-medium text-gray-500">
-                about me
-            </h3>
+            class="text-center space-y-2">
+            <h3 class="text-sm font-medium text-gray-500 uppercase">{{ t('about') }}</h3>
             <h2
-                class="text-4xl logo tracking-wide font-medium text-red-700 dark:text-red-600">
-                My Skills
+                class="text-4xl font-medium  tracking-wider text-red-800 dark:text-red-600"
+                :class="translations.language === 'en'? 'logo' : 'leading-10'">
+                <span>{{ t('aboutHeader1') }}</span><br />
+                <span>{{ t('aboutHeader2') }}</span>
             </h2>
-            <p
-                class="text-md font-normal text-gray-500 tracking-wide">
-                Learning in modern web development.
-            </p>
-            <h3
-                class="my-3 text-xl capitalize font-semibold tracking-normal flex gap-x-3 items-center">
-                <Webpage
-                    class="text-red-700 dark:text-red-600 w-5 h-5"    
-                />
-                <span>
-                    languages & technology
-                </span>
-            </h3>
-            <div 
-                class="w-full flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5">
-                <ul
-                    v-for="(item, idx) in technology"
-                    :key="idx"
-                    class="flex  flex-wrap gap-x-2">
-                    <li>
-                        <div 
-                            class="px-2 py-2 flex items-center border border-gray-300 dark:border-gray-600 gap-2 w-40 rounded-md shadow-sm"
-                            :class="item.color">
-                            <component
-                                :is="item.icon"
-                                class="w-5 h-5"
-                            />
-                            <span
-                                class="uppercase font-medium tracking-wide">
-                                {{ item.name }}
-                            </span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <h3
-                class="my-3 text-xl capitalize font-semibold tracking-normal flex gap-x-3 items-center pt-4">
-                <Tool
-                    class="text-red-700 dark:text-red-600 w-5 h-5"    
-                />
-                <span>
-                    Tools Supporter
-                </span>
-            </h3>
-
-            <div 
-                class="flex gap-x-4">
-                <div 
-                    class="w-56 h-52 border px-3 py-2 rounded-md shadow-md space-y-2">
-                    <div 
-                        class="flex justify-center items-center bg-blue-600 rounded-sm h-[30%]">
-                        <Ui
-                            class="text-white dark:text-black w-7 h-7"    
-                        />
-                    </div>
-                    <h4
-                        class="text-md font-bold">
-                        UI Tools
-                    </h4>
-                    <div 
-                        class="">
-                        <div 
-                            class="flex gap-x-2 items-center">
-                            <Nuxtui
-                                class="w-5 h-5"
-                            />
-                            <span
-                                class="text-md ">
-                                Nuxt UI
-                            </span>
-                        </div>
-                        <div 
-                            class="flex gap-x-2 items-center">
-                            <Mui
-                                class="w-5 h-5 text-blue-500"
-                            />
-                            <span
-                                class="text-md ">
-                                Mui
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                 <div 
-                    class="w-56 h-52 border px-3 py-2 rounded-md shadow-md space-y-2">
-                    <div 
-                        class="flex justify-center items-center bg-blue-900 rounded-sm h-[30%]">
-                        <DataIcon
-                            class="text-white dark:text-black w-7 h-7"    
-                        />
-                    </div>
-                    <h4
-                        class="text-md font-bold">
-                        Data Tools
-                    </h4>
-                    <div 
-                        class="">
-                        <div 
-                            class="flex gap-x-2 items-center">
-                            <Postman
-                                class="w-5 h-5"
-                            />
-                            <span
-                                class="text-md ">
-                                Postman
-                            </span>
-                        </div>
-                        <div 
-                            class="flex gap-x-2 items-center">
-                            <Hoppscotch
-                                class="w-5 h-5 text-green-600"
-                            />
-                            <span
-                                class="text-md ">
-                                Hoppscotch
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    class="w-56 h-52 border px-3 py-2 rounded-md shadow-md space-y-2">
-                    <div 
-                        class="flex justify-center items-center bg-orange-700 rounded-sm h-[30%]">
-                        <Tool
-                            class="text-white dark:text-black w-7 h-7"    
-                        />
-                    </div>
-                    <h4
-                        class="text-md font-bold">
-                        Version control
-                    </h4>
-                    <div>
-                        <div 
-                            class="flex gap-x-2 items-center">
-                            <Git
-                                class="w-5 h-5"
-                            />
-                            <span
-                                class="text-md ">
-                                Git
-                            </span>
-                        </div>
-                        <div 
-                            class="flex gap-x-2 items-center">
-                            <Github
-                                class="w-5 h-5"
-                            />
-                            <span
-                                class="text-md ">
-                                Mui
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div 
-            class="w-[50%] flex flex-col pt-10 gap-y-6">
-            <h2
-                class="text-wrap text-5xl tracking-normal leading-tight font-semibold flex flex-col">
-                <span>
-                    Designing with creativity,
-                </span> 
-                <span>
-                    Building with purpose
-                </span>
-            </h2>
-            <p
-                class="font-medium text-md text-justify">
-                I have been crafting frontend web development for one year, focusing on building responsive, user-friendly, and visually appealing interfaces. During this time, I have gained hands-on experience with modern tools like HTML, CSS (Tailwind), JavaScript, TypeScript, and Nuxt.js, allowing me to bring creative ideas into functional digital experiences. I am passionate about continuous learning and improving my skills to create impactful solutions that blend design and functionality.
-            </p>
-            <div
-                class="grid grid-cols-2 gap-x-2 gap-y-2 mt-4">
-                <ul
-                    v-for="(item, idx) in information"
-                    :key="idx">
-                    <li>
-                        <div 
-                            class="flex gap-x-3">
-                            <div
-                                class="px-3 bg-gray-900 dark:bg-gray-800 border border-gray-600 flex items-center justify-center rounded-lg">
-                                <component
-                                    :is="item.icon"
-                                    class="w-5 h-5 text-white"
-                                />
+            class="flex flex-col lg:flex-row gap-12 items-start">
+            <div 
+                class="w-full lg:w-2/5 space-y-6">
+                <div
+                    class="w-full h-[460px] shadow-lg rounded-xl overflow-hidden">
+                    <img
+                        src="https://img.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_488145-3540.jpg?semt=ais_hybrid&w=740&q=80"
+                        alt="profile"
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                    />
+                </div>
+            </div>
+            <div 
+                class="w-full lg:w-2/3 space-y-8">
+                <p 
+                    class="text-md text-gray-600 dark:text-gray-400 leading-relaxed">
+                    {{ t('paragraphAbout1') }}<span class="font-semibold">HTML</span>, 
+                    <span class="font-semibold">CSS (Tailwind)</span>, 
+                    <span class="font-semibold">JavaScript</span>, 
+                    <span class="font-semibold">TypeScript</span>, 
+                    {{ t('and') }}
+                    <span class="font-semibold">Nuxt.js</span>។ 
+                    {{ t('paragraphAbout2') }}
+                    <span class="font-semibold">RESTful APIs</span> 
+                    {{ t('and') }}
+                    <span class="font-semibold">{{ t('paragraphAbout3') }}</span> 
+                    {{ t('paragraphAbout4') }}
+                </p>
+                <div 
+                    class="w-full grid grid-cols-3 gap-4">
+                    <ul 
+                        v-for="(item) in information"
+                        :key="item.id">
+                        <li>
+                            <div 
+                                class="flex items-center gap-x-2">
+                                <div
+                                    class="bg-black dark:bg-gray-900 text-white px-2 py-2 rounded-lg">
+                                    <component 
+                                        :is="item.icon"
+                                        class="w-5 h-5"
+                                    />
+                                </div>
+                                <div 
+                                    class="flex flex-col items-start">
+                                    <span
+                                        class="text-lg  font-semibold text-black dark:text-gray-400">
+                                        {{ item.name }}
+                                    </span>
+                                    <span   
+                                        class="text-xs text-gray-500 font-medium">
+                                        {{ item.information }}
+                                    </span>
+                                </div>
                             </div>
+                        </li>
+                    </ul>
+                </div>
+                <div    
+                    class="space-y-4">
+                    <h3 
+                        class="text-xl font-semibold flex items-center gap-2 text-white dark:text-gray-400">
+                        <Webpage 
+                            class="text-red-700 dark:text-red-600 w-5 h-5" 
+                        />
+                        {{ t('techologayHeader') }}
+                    </h3>
+                    <div 
+                        class="flex flex-wrap gap-3">
+                        <div
+                            v-for="tech in technology"
+                            :key="tech.id"
+                            class="flex items-center gap-2 px-3 py-2 rounded-lg text-white dark:text-gray-700 shadow-md hover:scale-105 transition-transform duration-300"
+                            :class="tech.color">
+                            <component 
+                                :is="tech.icon" 
+                                class="w-5 h-5" 
+                            />
+                            <span 
+                                class="uppercase font-medium text-sm">
+                                {{ tech.name }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div 
+                    class="space-y-4">
+                    <h3 
+                        class="text-xl font-semibold flex items-center gap-2 text-white dark:text-gray-400">
+                        <Tool 
+                            class="text-red-700 dark:text-red-600 w-5 h-5" 
+                        />
+                        {{ t('SupportingToolHeader') }}
+                    </h3>
+                    <div 
+                        class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div
+                            class="flex items-center gap-4 px-3 py-1 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-all duration-300">
                             <div
+                                class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-tr from-blue-500 to-indigo-600 text-white">
+                                <Ui class="w-7 h-7" />
+                            </div>
+                            <div 
                                 class="flex flex-col">
-                                <span
-                                    class="text-md font-semibold">
-                                    {{ item.name }}
-                                </span>
-                                <span
-                                    class="text-sm text-gray-500">
-                                    {{ item.information }}
-                                </span>
+                                <h4 
+                                    class="text-lg font-semibold text-black dark:text-gray-400">
+                                    {{ t('uiTool') }}
+                                </h4>
+                                <div 
+                                    class="mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-600">
+                                    <div 
+                                        class="flex items-center gap-2">
+                                        <Nuxtui 
+                                            class="w-5 h-5 text-green-600" 
+                                        />
+                                        <span>Nuxt UI</span>
+                                </div>
+                                <div 
+                                    class="flex items-center gap-2">
+                                    <Mui class="w-5 h-5 text-blue-500" />
+                                    <span>MUI</span>
+                                </div>
+                                </div>
                             </div>
                         </div>
-                    </li>
-                </ul>
+                        <div
+                            class="flex items-center gap-4 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-all duration-300">
+                            <div
+                                class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-tr from-blue-800 to-indigo-900 text-white">
+                                <DataIcon class="w-7 h-7" />
+                            </div>
+                            <div 
+                                class="flex flex-col">
+                                <h4 
+                                    class="text-lg font-semibold text-black dark:text-gray-400">
+                                    {{ t('dataTool') }}
+                                </h4>
+                                <div 
+                                    class="mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-600">
+                                    <div 
+                                        class="flex items-center gap-2">
+                                        <Postman 
+                                            class="w-5 h-5 text-green-600" 
+                                        />
+                                        <span>Postman</span>
+                                </div>
+                                <div 
+                                    class="flex items-center gap-2">
+                                    <Hoppscotch class="w-5 h-5 text-green-600" />
+                                    <span>Hoppscotch</span>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="flex items-center gap-4 px-4 py-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition-all duration-300">
+                            <div
+                                class="flex items-center justify-center w-14 h-14 rounded-lg bg-gradient-to-tr from-amber-800 to-amber-900 text-white">
+                                <Tool class="w-6 h-6" />
+                            </div>
+                            <div 
+                                class="flex flex-col">
+                                <h4 
+                                    class="text-lg font-semibold text-black dark:text-gray-400">
+                                    {{ t('versionControl') }}
+                                </h4>
+                                <div 
+                                    class="mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-600">
+                                    <div 
+                                        class="flex items-center gap-2">
+                                        <Git 
+                                            class="w-5 h-5 text-green-600" 
+                                        />
+                                        <span>Git</span>
+                                    </div>
+                                    <div 
+                                        class="flex items-center gap-2">
+                                        <Github class="w-5 h-5 text-gray-600 dark:text-gray-400" />
+                                        <span>Github</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
+
 
 <script setup lang="ts">
 import {
@@ -248,6 +234,11 @@ import {
     Call,
     Email
 } from "@/components/icons";
+import { 
+    useTranslation 
+} from '@/composables/useTranslation';
+
+const { t, translations } = useTranslation();
 
 const technology = [
     {
@@ -324,44 +315,44 @@ const technology = [
     }
 ];
 
-const information = [
+const information = computed(() => [
     {
         id: 1, 
         icon: Webpage,
-        name: 'Field',
-        information: 'Web Development'
+        name: String(t('field')),
+        information: String(t('fieldDetail'))
     },
     {
         id: 2, 
         icon: Focus,
-        name: 'Focus',
-        information: 'Frontend Web Development'
+        name: String(t('focus')),
+        information: String(t('focusDetail'))
     },
     {
         id: 3, 
         icon: Cake,
-        name: 'Birthdate',
-        information: '01-Dec-2002'
+        name: t('birthDate'),
+        information: t('birthdateDate')
     },
     {
         id: 4, 
         icon: Location,
-        name: 'Address',
-        information: 'Phnom Penh, Cambodia'
+        name: t('locationAbout'),
+        information: t('locationDate')
     },
     {
         id: 5, 
         icon: Call,
-        name: 'Tel',
-        information: '(+855)95 872 770'
+        name: t('tel'),
+        information: '+855 95 872 770'
     },
     {
         id: 6, 
         icon: Email,
-        name: 'Email',
+        name: t('email'),
         information: 'vatnagz@gmail.com'
     },
-]
+]) 
 
 </script>
 

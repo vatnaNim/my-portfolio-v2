@@ -48,7 +48,7 @@ const callPhone = () => {
 
 <template>
     <div 
-        class="">
+        class="relative">
         <Home/>
         <About/>
         <Achievement/>
