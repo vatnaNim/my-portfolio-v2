@@ -1,5 +1,6 @@
 {
 	"close": "Close",
+	"menu": "Menu",
 
 	"home": "Home",
 	"about": "About me",
@@ -125,9 +126,37 @@
     "kiwiResp3": "Used POS systems to handle payments (Cash, Card or Vouchers) and checked receipts correctly.",
     "kiwiResp4": "Helped train new staff members on the register and provided guidance on store procedures.",
 
+	"featuredWork": "Featured Work",
+	"projectTitle1": "Take a look at some of my featured work. I focus on creating modern, creative, and user-friendly projects that highlight both design and functionality. Each project reflects my dedication to quality and detail.",
+	"projectTitle2": "Interested in seeing more of my work?",
+	"viewAllProject": "view all project",
+	"viewProject": "View Project",
+	"viewGithubModal": "View the source code for Task Management App",
+	"demoProjectTitle": "Demo project Images",
+	"technology": "technology",
+	"details": "Details",
+	"followUs": "Follow Me",
+	"explore": "explore",
+	"myProject": "My Project",
+	"titleProject": "Build for love, grow with passion.",
+	"realTimeProject": "Realtime Project",
+	"projectCard1": "Personal Portfolio V2.0 is a modern, fully responsive website designed to showcase my skills, projects, and professional experience. Built with Nuxt, TypeScript, Tailwind CSS, and Nuxt UI, it features smooth animations, interactive sections, and a clean, minimal design. The project highlights my focus on performance and usability",
+	"projectCard2": "A modern, responsive personal portfolio website showcasing my skills, projects, and experience. Built using React with TypeScript, Tailwind CSS, and Material UI, it includes interactive sections, smooth animations, and a clean design to highlight my development work and contact information.",
+	"projectCard3": "A front-end training project for a coffee shop website with a clean UI, responsive layout, and modular structure. This project was built for self-learning and runs locally using \"npm run dev\". It integrates with the \"Robert Coffee (Back-End)\" service for login authentication and uses REST APIs for data handling and communication.",
+	"projectCard4": "A backend training project built with Laravel and MySQL to support the Robert Coffee front-end. This project was developed as part of my self-learning journey to practice server-side development. It runs locally using XAMPP Control Panel v3.3.0 and provides RESTful APIs for authentication and data operations",
+	"projectCard5": "A static website built during my first experience learning a front-end framework. Developed using Nuxt.js, this project simulates a skin care product ordering site and helped me understand the fundamentals of Vue, Tailwind CSS, and component-based development. It was a personal learning project focused on layout structure, styling, and rendering static content effectively",
+	"projectCard6": "A static website built during my first experience learning a front-end framework. Developed using Nuxt.js, this project simulates a skin care product ordering site, helping me understand the fundamentals of Vue, Tailwind CSS, and component-based development. It was a personal learning project focused on layout structure, styling, and static content rendering.Read",
+	"projectCard7": "A static website built during my first experience learning a front-end framework. Developed using Nuxt.js, this project simulates a skin care product ordering site, helping me understand the fundamentals of Vue, Tailwind CSS, and component-based development. It was a personal learning project focused on layout structure, styling, and static content rendering",
+	"projectCard8": "A Nuxt.js project created to deepen my understanding of modern frontend frameworks and REST API integration. The application showcases photographer profiles and testimonials, with dynamic data fetched from a backend API. It was developed as a self-learning exercise using TypeScript and Tailwind CSS. The project runs locally using \"npm run dev\" for the client and open one more terminal and run this command-line \"npx json-server --watch static/data/photographyDb.json --port 3001\" for the backend.",
+	"projectCard9": "Developed the frontend interface of the Gtech Admin panel, implementing responsive UI components and integrating with backend APIs. Focused on debugging, improving user experience, and ensuring seamless interaction with the admin dashboard.",
+	"projectCard10": "Worked on maintaining and improving the Gtech Cambodia website. Implemented API integrations, optimized frontend performance, and ensured cross-browser compatibility. Focused on clean UI and smooth interactions for end-users.",
+	"projectCard11": "Built the frontend dashboard for Sambot Digital Admin, creating interactive components and ensuring smooth integration with backend APIs. Focused on improving user experience and providing an efficient workflow for digital management.",
+	"projectCard12": "Developed reusable frontend templates for the Sambot Digital Mail system. Followed UI guidelines to create a digital mail platform for customers to send invitations for ceremonies such as weddings, birthdays, and other events.",
+	"projectCard13": "Developed the frontend interface for the Samphat Motobike POS System. Implemented responsive layouts, interactive components, and smooth navigation to enhance the experience for staff managing orders and inventory.",
+			
 	"contactTitle1": "Let's work Together",
 	"contactTitle2": "Hi there! I hope you’re having a great day. It’s always nice to connect and share good vibes with others!",
-	"contectTitle3": "Scan the QR code below to support me.Thank you so much!🙏",
+	"contactTitle3": "Scan the QR code below to support me.Thank you so much!🙏",
 	"getInTouch": "Get in Touch",
 	"getInTouch2": " I’d love to hear from you! Feel free to reach out anytime and say hello.",
 	"connectWithMe": "Connect with me",
@@ -154,6 +183,6 @@
 	"byFt": "by Nim Vatna",
 	"viewPortflio": "View Portflio",
 	"callMe": "Call Me",
-	"sayHelloTelegram": "Say hi to my Telegram!"
-
+	"sayHelloTelegram": "Say hi to my Telegram!",
+	"lastestWork": "Latest Work"
 }	

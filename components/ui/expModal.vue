@@ -2,39 +2,43 @@
     <UModal 
         v-bind:model-value="open"
         :ui="{ 
-            fullscreen: 'w-[1000px] h-full',
+            fullscreen: 'max-w-full md:max-w-4xl h-full ',
             height: 'h-full',
             rounded: 'rounded-lg',
-            inner: 'overflow-hidden',
+            inner: 'overflow-y-auto  md:overflow-hidden',
             background: 'bg-gray-200/75 dark:bg-gray-800/75'
-        }" 
+        }"
         fullscreen>
         <UCard 
             :ui="{ 
                 rounded: 'rounded-lg',
                 ring: '',
+                base: '',
                 divide: 'divide-y divide-gray-300 dark:divide-gray-800',
                 header: {
                     base: 'flex justify-between items-center',
-                    padding: 'px-0 py-3'
-                } }">
+                    padding: 'px-2 py-3'
+                } 
+            }">
             <template #header>
                 <div 
-                    class="flex gap-x-2 items-center ">
-                    <UAvatar
-                        :src="logo"
-                        :alt="logoTitle"
-                        size="md"
+                    class="flex gap-x-2 items-center">
+                    <UAvatar 
+                        :src="logo" 
+                        :alt="logoTitle" 
+                        size="md" 
                     />
                     <div 
                         class="leading-5">
-                        <h2
-                            class="text-md font-semibold">
+                        <h2 
+                            class="text-md font-semibold uppercase tracking-wider">
                             {{ logoTitle }}
                         </h2>
-                        <span
-                            class="flex items-center text-gray-400">
-                            <Location class="w-4 h-4"/>
+                        <span 
+                            class="flex items-center text-gray-400 dark:text-gray-500">
+                            <Location 
+                                class="w-4 h-4"
+                            />
                             <span class="text-sm">
                                 {{ location }}
                             </span>
@@ -48,22 +52,24 @@
                         size="sm"
                         variant="ghost"
                         color="red"
-                        :ui="{
-                            variant: {
-                                ghost:'ring-0'
-                            }
+                        :ui="{ 
+                            variant: { 
+                                ghost:'ring-0 focus-visible:ring-0' 
+                            } 
                         }"
                         @click="emits('toggle', '', false)">
-                        <Cancel class="w-5 h-5"/>
+                        <Cancel 
+                            class="w-5 h-5"
+                        />
                     </UButton>
                 </UTooltip>
             </template>
             <div 
-                class="flex gap-x-4">
+                class="flex flex-col md:flex-row gap-4 p-2 ">
                 <div 
-                    class="w-[40%] flex justify-center">
+                    class="flex justify-center md:w-[40%]">
                     <div 
-                        class="w-[330px] h-[400px] bg-gray-200 dark:bg-gray-700  rounded-lg shadow-md overflow-hidden flex justify-center items-center">
+                        class="w-full max-w-xs sm:max-w-sm aspect-[3/4] bg-white dark:bg-gray-900 overflow-hidden flex justify-center items-center">
                         <Modal
                             v-if="loading && imageUrl"
                             class="w-14 h-14 text-red-700 dark:text-red-600"
@@ -74,56 +80,62 @@
                             :alt="logoTitle"
                             @load="handleLoad"
                             @error="handleError"
-                            class="object-fill w-full h-full"
+                            class="object-scale-down w-full h-full"
                         />
                         <NoImage 
                             v-else 
-                            class="w-20 h-20 text-red-700 dark:text-red-600"
+                            class="md:w-20 md:h-20 sm:w-14 sm:h-14 w-10 h-10 text-red-700 dark:text-red-600"
                         />
                     </div>
                 </div>
                 <div 
-                    class="w-[60%] space-y-3 max-h-[70vh] overflow-y-auto scrollable">
+                    class="w-full md:w-[60%] space-y-3 max-h-full md:max-h-[70vh] overflow-y-auto scrollable">
                     <span>
-                        <h2
-                            class="text-lg font-medium capitalize">
+                        <h2 
+                            class="text-lg font-medium uppercase">
                             {{ logoTitle }}
                         </h2>
-                        <span
-                            class="flex items-center text-gray-400">
-                            <Date class="w-4 h-4"/>
+                        <span 
+                            class="flex items-center text-gray-400 dark:text-gray-600">
+                            <Date 
+                                class="w-4 h-4"
+                            />
                             <span class="text-sm">
                                 {{ workingTime }}
                             </span>
                         </span>
                     </span>
                     <div>
-                        <span
+                        <span 
                             class="flex items-center gap-x-0.5 pb-1">
-                            <Thunder class="w-6 h-6 text-red-700 dark:text-red-600"/>
-                            <span class="text-md font-medium ">
+                            <Thunder 
+                                class="w-6 h-6 text-red-700 dark:text-red-600"/>
+                            <span class="text-md font-medium">
                                 {{ t('keyAchi') }}
                             </span>
                         </span>
                         <ul
-                            class="list-disc list-outside px-5 text-sm font-medium ml-5 text-gray-600 dark:text-gray-400 marker:text-red-700 dark:marker:text-red-600"
                             v-for="(text, idx) in keyAchievements"
-                            :key="idx">
+                            :key="idx"
+                            class="list-disc list-outside px-2 sm:px-5 text-sm font-medium ml-5 text-gray-600 dark:text-gray-400 marker:text-red-700 dark:marker:text-red-600">
                             <li>{{ text }}</li>
                         </ul>
                     </div>
                     <div>
-                        <span
+                        <span 
                             class="flex items-center gap-x-0.5 pb-1">
-                            <Experience class="w-6 h-6 text-red-700 dark:text-red-600"/>
-                            <span class="text-md font-medium capitalize">
+                            <Experience 
+                                class="w-6 h-6 text-red-700 dark:text-red-600"
+                            />
+                            <span 
+                                class="text-md font-medium capitalize">
                                 {{ t('repAndWork') }}
                             </span>
                         </span>
                         <ul
-                            class="list-disc list-outside px-5 text-sm font-medium ml-5 text-gray-600 dark:text-gray-400 marker:text-red-700 dark:marker:text-red-600"
                             v-for="(text, idx) in responsible"
-                            :key="idx">
+                            :key="idx"
+                            class="list-disc list-outside px-2 sm:px-5 text-sm font-medium ml-5 text-gray-600 dark:text-gray-400  marker:text-red-700 dark:marker:text-red-600">
                             <li>{{ text }}</li>
                         </ul>
                     </div>
@@ -132,6 +144,7 @@
         </UCard>
     </UModal>
 </template>
+
 
 <script setup lang="ts">
 import { 

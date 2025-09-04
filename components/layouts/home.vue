@@ -1,40 +1,46 @@
 <template>
     <div
-        class="w-full min-h-[90vh] px-8 flex ">
+        class="w-full min-h-full md:min-h-[90vh] px-4 md:px-8 flex flex-col-reverse md:flex-row gap-y-3 sm:gap-y-8 md:gap-y-0">
         <div 
-            class="w-[50%] flex flex-col justify-start items-start gap-y-4 pt-8">
+            class="w-full md:min-w-[50%] flex flex-col justify-start items-center md:items-start gap-y-2 md:gap-y-4 mt-0 md:pt-8">
             <UBadge 
                 variant="solid"
                 color="gray"
-                :ui="{ rounded: 'rounded-full' }">
-                <Dot class="text-green-500 w-5 h-5"/>
+                size="xs"
+                :ui="{ 
+                    rounded: 'rounded-full',
+                }">
+                <Dot class="text-green-500 w-4 h-4 md:w-5 md:h-5 "/>
                 <span
                     class="text-gray-500 dark:text-gray-300">
-                      {{ t('newOpportunities') }}
+                    {{ t('newOpportunities') }}
                 </span>
             </UBadge>
-            <h2
-                class=" font-semibold text-wrap"
-                :class="translations.language === 'en'? 'text-6xl' : 'text-5xl'">
-                {{ t('hello_there') }}
-            </h2>
-            <h2
-                class=" text-red-700 dark:text-red-600 text-5xl logo tracking-wider"
-                :class="translations.language === 'en'? 'font-medium' : 'font-medium fontKhmer pt-2'">
-                {{ t('name') }}
-            </h2>
             <div 
-                class="flex items-center gap-2  font-bold uppercase text-gray-600 dark:text-gray-500"
-                :class="translations.language === 'en'? 'text-3xl' : 'text-4xl -mt-2'">
-                <span>{{ t('position') }} &</span>
+                class="space-y-0 sm:space-y-0.5 md:space-y-1 lg:space-y-2 md:text-start text-center">
+                <h2
+                    class=" font-semibold text-wrap"
+                    :class="translations.language === 'en'? 'text-3xl sm:text-4xl md:text-5xl lg:text-6xl' : 'font-medium text-3xl md:text-4xl lg:text-5xl tracking-tight leading '">
+                    {{ t('hello_there') }}
+                </h2>
+                <h2
+                    class=" text-red-700 dark:text-red-600  "
+                    :class="translations.language === 'en'? 'font-medium logo text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-wider' : 'font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl pt-2'">
+                    {{ t('name') }}
+                </h2>
                 <div 
-                    class="relative h-10 w-32 overflow-hidden">
-                    <span class="absolute animate-up">Nuxt</span>
-                    <span class="absolute animate-down">React</span>
+                    class="flex items-center gap-x-0 md:gap-x-2  font-bold uppercase text-gray-500 dark:text-gray-400"
+                    :class="translations.language === 'en'? 'text-md sm:text-xl md:text-2xl lg:text-3xl' : 'text-md sm:text-xl md:text-2xl lg:text-3xl'">
+                    <span>{{ t('position') }} &</span>
+                    <div 
+                        class="relative h-8 md:h-10 w-16 md:w-24 lg:w-32 overflow-hidden">
+                        <span class="absolute animate-up">Nuxt</span>
+                        <span class="absolute animate-down">React</span>
+                    </div>
                 </div>
             </div>
            <p 
-                class="text-base leading-relaxed text-gray-700 dark:text-gray-300 max-w-[600px]">
+                class=" text-sm lg:text-base leading-5 md:leading-relaxed text-center md:text-start text-gray-600 dark:text-gray-300 max-w-[600px]">
                 {{ t('withOver') }} <span class="font-semibold text-red-600 dark:text-red-500">{{ t('oneYear') }}</span> 
                 {{ t('focusOnDeliver') }}
                 <span class="font-semibold">{{ t('modernDesign') }}</span> {{ t('and') }} <span class="font-semibold">{{ t('cleanCode') }}</span>. 
@@ -42,13 +48,13 @@
                 {{ t('talk') }}
             </p>
             <div 
-                class="flex items-center gap-x-2">
+                class="flex flex-col md:flex-row items-center gap-y-2 md:gap-x-2">
                 <span
-                    class="text-md font-semibold">
+                    class="text-sm md:text-md font-semibold">
                     {{ t('followme') }} :
                 </span>
                 <div 
-                    class="flex gap-x-2">
+                    class="flex gap-x-1.5 sm:gap-x-2">
                     <ul
                         v-for="(social, idx) in mySocialMedia"
                         :key="idx">
@@ -84,7 +90,8 @@
                                     }">
                                     <component 
                                         :is="social.icon" 
-                                        class="w-4 h-4 text-white" />
+                                        class="w-4 h-4 text-white"  
+                                    />
                                 </u-button>
                             </UTooltip>
                         </li>
@@ -93,7 +100,7 @@
             </div>
             <div 
                 class="">
-                <div class="flex items-center gap-x-2">
+                <div class="flex items-center gap-x-1 lg:gap-x-2">
                     <u-tooltip
                         :text="t('contactme')"
                         :ui="{
@@ -103,15 +110,26 @@
                             placement: 'top', 
                             arrow: true }">
                         <u-button
-                            
                             size="md"
                             variant="solid"
-                            :color="darkColor ? 'gray' : 'black'">
+                            :color="darkColor ? 'gray' : 'black'"
+                            :ui="{
+                                padding: {
+                                    md: 'px-1 sm:px-2 lg:px-3 py-2'
+                                },
+                                gap: {
+                                    'md': 'lg:gap-x-2 gap-x-1'
+                                },
+                                size: {
+                                    'md': 'text-sm lg:text-md'
+                                }
+                            }">
                             <LongArrow
-                                class="w-6 h-6 text-gray-200"
+                                class="w-5 lg:w-6 h-5 lg:h-6 text-gray-200"
                             />
                             <span
-                                class="text-md font-semibold capitalize">
+                                class=" font-semibold capitalize text-wrap"
+                                :class="translations.language === 'en'? 'text-xs md:text-sm lg:text-md' : 'text-[0.65rem] md:text-[0.70rem] lg:text-md'">
                                 {{ t('contactme') }}
                             </span>
                         </u-button>
@@ -130,30 +148,40 @@
                                     base: 'flex items-center gap-2 transition-all duration-300',
                                     rounded: 'rounded-lg',
                                     variant: {
-                                    outline: 'hover:bg-black hover:text-white dark:hover:bg-gray-200 dark:hover:text-black'
+                                        outline: 'hover:bg-black hover:text-white dark:hover:bg-gray-200 dark:hover:text-black'
+                                    },
+                                    padding: {
+                                        md: 'px-1 sm:px-2 lg:px-3 py-2'
+                                    },
+                                    gap: {
+                                        'md': 'lg:gap-x-2 gap-x-1'
+                                    },
+                                    size: {
+                                        'md': 'text-sm lg:text-md'
                                     }
                                 }"
                                 class="group">
                                 <download
-                                    class="w-6 h-6 text-black dark:text-gray-300 group-hover:text-white dark:group-hover:text-black"
+                                    class="w-5 md:w-6 h-5 md:h-6 text-black dark:text-gray-300 group-hover:text-white dark:group-hover:text-black"
                                 />
                                 <span 
-                                    class="text-md font-semibold">
+                                    class="font-semibold text-wrap"
+                                    :class="translations.language === 'en'? 'text-xs md:text-sm lg:text-md' : 'text-[0.65rem] md:text-[0.70rem] lg:text-md'">
                                     {{ t('downloadCv') }}
                                 </span>
                             </u-button>
                     </u-tooltip>
                     <span
-                        class="text-sm ml-4 space-x-3">
-                        <span class="text-gray-300">|</span> <span>{{ t('projectDone')}}</span>
+                        class="text-xs sm:text-sm ml-0 md:ml-2 lg:ml-4 space-x-1 sm:space-x-2 md:space-x-1.5 lg:space-x-3 text-nowrap flex">
+                        <span class="text-gray-300 hidden md:block">|</span> <span>{{ t('projectDone')}}</span>
                     </span>
                 </div>
                 
             </div>
             <div 
-                class="flex justify-center items-center gap-x-4 pt-3">
+                class="flex justify-center items-center gap-x-3 sm:gap-x-4 pt-3">
                 <span
-                    class="flex items-center gap-x-1 text-gray-600 dark:text-gray-500">
+                    class="flex items-center gap-x-1 text-gray-500 dark:text-gray-400">
                     <u-tooltip
                         text="Address"
                         :popper="{ 
@@ -165,12 +193,12 @@
                         />
                     </u-tooltip>
                     <span
-                        class="text-xs font-medium ">
+                        class="text-xs sm:text-xs font-medium ">
                         {{ t('location') }}
                     </span>
                 </span>
                 <span
-                    class="flex items-center gap-x-1 text-gray-600 dark:text-gray-500">
+                    class="flex items-center gap-x-1 text-gray-500 dark:text-gray-400">
                     <u-tooltip
                         text="Languages"
                         :popper="{ 
@@ -186,8 +214,8 @@
                     </span>
                 </span>
                 <span
-                    class="flex items-center gap-x-1 text-gray-600 dark:text-gray-500">
-                        <u-tooltip
+                    class="flex items-center gap-x-1 text-gray-500 dark:text-gray-400">
+                    <u-tooltip
                         text="Experience"
                         :popper="{ 
                             arrow: true,
@@ -205,30 +233,35 @@
             </div>
         </div>
         <div 
-            class="w-[50%] flex justify-center items-center perspective-[1200px]">
+            class="w-full md:min-w-[50%] flex justify-center items-center perspective-[1200px]">
             <div 
-                class="animated-card relative w-[300px] h-[400px] rounded-3xl overflow-hidden shadow-2xl group">
+                class="animated-card relative w-[90vw] max-w-[300px] sm:w-[300px] h-[400px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl group mx-auto">
                 <img
-                    src="https://img.freepik.com/free-photo/portrait-handsome-confident-stylish-hipster-lambersexual-modelman-dressed-jacket-jeans-fashion-male-posing-street-background_158538-23209.jpg?semt=ais_hybrid"
+                    src="https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756829107/IMG_3819_ewhamp.webp"
                     alt="Nim Vatna"
-                    class="w-full h-full object-cover rounded-3xl transition-all duration-500 group-hover:blur-sm"
+                    class="w-full h-full object-cover rounded-2xl transition-all duration-500 group-hover:blur-sm"
                 />
-                <div 
-                    class="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/10 animate-shine pointer-events-none"></div>
-                <div
-                    class="absolute bottom-5 left-1/2 -translate-x-1/2 px-6 py-3 rounded-2xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-lg flex flex-col items-center gap-1 transition-transform duration-500 group-hover:-translate-y-2">
-                    <span 
-                        class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{ t('name') }}</span>
-                    <span 
-                        class=" text-gray-600 dark:text-gray-300 text-center"
-                        :class="translations.language === 'en'? 'text-xs': 'text-sm'">{{ t('position') }}</span>
-                    <button 
-                        class="mt-2  bg-gradient-to-r from-red-500 to-red-700 text-white rounded-full shadow-md hover:scale-105 transition-transform"
-                        :class="translations.language === 'en'? 'text-sm px-3 py-1.5' : 'text-xs px-3 py-2'">
-                        {{ t('contactme') }}
-                    </button>
-                </div>
+            <div 
+                class="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-white/10 animate-shine pointer-events-none"></div>
+            <div
+                class="absolute bottom-5 left-1/2 -translate-x-1/2 px-3 sm:px-6 py-1 sm:py-2 rounded-xl bg-gray-200/30 dark:bg-gray-800/90 backdrop-blur-sm shadow-lg flex flex-col items-center gap-y-2 transition-transform duration-500 group-hover:-translate-y-2 w-[85%] sm:w-auto">
+                <span 
+                    class="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100 text-center">
+                    {{ t('name') }}
+                </span>
+                <span 
+                    class="text-gray-600 dark:text-gray-300 text-center"
+                    :class="translations.language === 'en' ? 'text-xs sm:text-sm' : 'text-[0.75rem] md:text-sm'">
+                    {{ t('position') }}
+                </span>
+                <button 
+                    class=" uppercase bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-md hover:scale-105 transition-transform w-full sm:w-auto"
+                    :class="translations.language === 'en' ? 'text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-1.5' : 'text-[0.65rem] sm:text-[0.70rem] px-3 py-2 sm:px-4 sm:py-2'">
+                    {{ t('contactme') }}
+                </button>
             </div>
+            </div>
+
         </div>
     </div>
 </template>

@@ -1,60 +1,39 @@
-<!-- <template>
-  <div class="p-4">
-    <button @click="downloadPdf" class="px-4 py-2 bg-blue-500 text-white rounded">
-      Download PDF
-    </button>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { useDownloadFile } from '@/composables/useDownloadFile'
-
-const { downloadFile } = useDownloadFile()
-
-const downloadPdf = () => {
-  // Full URL of your online PDF
-  const pdfUrl = '/films/NimVatnaResume.pdf'
-  downloadFile(pdfUrl, 'NimVatnaResume.pdf')
-}
-</script> -->
-
-<!-- <template>
-  <a href="#" @click.prevent="openTelegram" class="text-blue-500 hover:underline">
-    Open Telegram
-  </a>
-</template>
-
-<script setup lang="ts">
-const openTelegram = (): void => {
-    const username: string = 'vatna'; 
-    window.location.href = `tg://resolve?domain=${username}`;
-    setTimeout((): void => {
-        window.open(`https://t.me/${username}`, '_blank');
-    }, 400);
-}
-</script> -->
-
-<!-- <template>
-  <button @click="callPhone" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
-    Call Now
-  </button>
-</template>
-
-<script setup lang="ts">
-const callPhone = () => {
-    window.location.href = "tel:+85598727010";
-};
-</script> -->
-
 <template>
     <div 
-        class="relative">
-        <Home/>
-        <About/>
-        <Achievement/>
-        <Experience/>
-        <Projects/>
-        <Contact/>
+        class="relative space-y-4 sm:space-y-8 ">
+        <Home
+            id="home"
+        /> 
+        <About
+            id="about"
+        /> 
+        <Achievement
+            id="achievement"
+        />
+        <Experience
+            id="experience"
+        />
+        <Projects
+            id="project"
+        /> 
+        <Contact
+            id="contact"
+        /> 
+        <UTooltip
+            text="top"
+            :popper="{
+                arrow: true,
+            }"
+            v-if="showButton"
+            class="fixed right-3 bottom-2 ">
+            <button
+                @click="scrollToHome"
+                class="px-3 py-2 bg-gray-300/20 backdrop-blur-sm rounded-full shadow-md hover:bg-red-300/30 duration-300 hover:-translate-y-1  hover:scale-110 ease-in-out transition">
+                <ArrowAnimation
+                    class="w-4 h-5 rotate-90 text-red-700 dark:text-red-600"
+                />
+            </button>
+        </UTooltip>
     </div>
 </template>
 
@@ -67,6 +46,30 @@ import {
     Projects,
     Contact
 } from '~/components/layouts';
+import { 
+    ArrowAnimation 
+} from '~/components/icons';
+
+const showButton: Ref<boolean> = ref<boolean>(false);
+
+const checkScroll = (): void => {
+    showButton.value = window.scrollY > 50;
+};
+
+onMounted((): void => {
+    window.addEventListener('scroll', checkScroll);
+});
+
+onUnmounted((): void => {
+    window.removeEventListener('scroll', checkScroll);
+});
+
+const scrollToHome = (): void => {
+    const el = document.querySelector('#home');
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+};
 </script>
 
 <style scoped>

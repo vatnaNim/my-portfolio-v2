@@ -1,41 +1,35 @@
 <template>
     <div 
-        class="flex flex-col px-40 py-8 bg-black dark:bg-gray-900 text-white mt-20 space-y-4">
-        <div
-            class="  flex gap-x-4 justify-start ">
+        class="flex flex-col px-6 sm:px-12 lg:px-40 py-8 bg-black dark:bg-gray-900 text-white mt-4 md:mt-10 lg:mt-14 space-y-6">
+        <div 
+            class="flex flex-col lg:flex-row gap-y-8 lg:gap-x-8 justify-between">
             <div 
-                class="flex-1 space-y-4">
-                <span
-                    class="space-y-0.5">
-                    <h3
+                class="flex-1 space-y-4 text-center lg:text-left">
+                <div>
+                    <h3 
                         class="text-xl font-semibold uppercase">
                         {{ t('footerTitle1') }}
                     </h3>    
-                    <p
-                        class="text-xs tracking-wide flex flex-col font-medium text-gray-400">
-                        <span>
-                            {{ t('footerTitle2') }}
-                        </span>
+                    <p 
+                        class="text-xs tracking-wide font-medium text-gray-400">
+                        {{ t('footerTitle2') }}
                     </p>
-                </span>
+                </div>
                 <div 
                     class="space-y-2">
-                    <h3
+                    <h3 
                         class="text-md font-semibold">
                         {{ t('followme') }}:
                     </h3>  
                     <div 
-                        class="flex">
-                        <ul
-                            v-for="(item, idx) in media"
+                        class="flex justify-center lg:justify-start">
+                        <ul 
+                            v-for="(item, idx) in media" 
                             :key="idx">
                             <li>
                                 <u-tooltip
                                     :text="item.name"
-                                    :popper="{
-                                        placement: 'top',
-                                        arrow: true,
-                                    }">
+                                    :popper="{ placement: 'top', arrow: true }">
                                     <u-button
                                         size="xs"
                                         variant="link"
@@ -43,8 +37,8 @@
                                         :to="item.link"
                                         target="_blank">
                                         <component  
-                                            class="w-6 h-5 hover:text-red-700 dark:hover:text-red-600 duration-300 ease-in-out"
-                                            :is="item.logo"
+                                        class="w-6 h-5 hover:text-red-700 dark:hover:text-red-600 duration-300 ease-in-out"
+                                        :is="item.logo"
                                         />
                                     </u-button>
                                 </u-tooltip>
@@ -54,86 +48,73 @@
                 </div>
             </div>
             <div 
-                class="flex-1 flex flex-col  items-center gap-y-2">
-                <h3
+                class="flex-1 flex flex-col items-center gap-y-2 text-center">
+                <h3 
                     class="text-md font-semibold">
                     {{ t('quickLink') }}
                 </h3>  
-                <div 
-                    class="flex flex-col justify-center text-center gap-y-1">
-                    <ul
-                        v-for="(item, idx) in quickLinks"
-                        :key="idx">
-                        <li
-                            class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm hover:underline hover:underline-offset-2 duration-300 ease-in-out">
-                            <a 
-                                :href="item.path">
-                                <span>
-                                    {{ item.name }}
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                <ul 
+                    class="flex flex-col gap-y-1">
+                    <li 
+                        v-for="(item, idx) in quickLinks" :key="idx"
+                        class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer"
+                        @click="handleClick(item.target ?? '')">
+                        {{ item.name }}
+                    </li>
+                </ul>
             </div>
             <div 
-                class="flex-1 flex flex-col  items-end gap-y-2">
-                <h3
+                class="flex-1 flex flex-col items-center lg:items-end gap-y-2 text-center lg:text-right">
+                <h3 
                     class="text-md font-semibold">
-                    Latest Work
+                    {{ t('latestWork') }}
                 </h3>  
-                <ul
-                    class="space-y-2 text-end flex flex-col justify-center items-end">
-                    <li
-                        class="text-gray-400 text-sm  hover:text-red-700 dark:hover:text-red-600">
-                        <a 
-                            href="">
+                <ul 
+                    class="space-y-2 flex flex-col items-center lg:items-end">
+                    <li 
+                        class="text-gray-400 text-sm hover:text-red-700 dark:hover:text-red-600">
+                        <NuxtLink 
+                            to="/">
                             <div 
-                                class="flex  items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
-                                <span>
-                                    {{ t('viewPortflio') }}
-                                </span>
-                                <Open
-                                    class="w-4 h-4"
-                                />
+                                class="flex items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
+                                <span>{{ t('viewPortflio') }}</span>
+                                <Open class="w-4 h-4"/>
                             </div>
-                        </a>
+                        </NuxtLink>
                     </li>
-                    <li
-                        class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm "
+                    <li 
+                        class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm"
                         @click="downloadPdf">
                         <div 
-                            class="flex  items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
+                            class="flex items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
                             <span>
                                 {{ t('downloadCv') }}
                             </span>
-                            <Open
+                            <Open 
                                 class="w-4 h-4"
                             />
                         </div>
                     </li>
-                    <li
-                        class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm "
+                    <li 
+                        class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm"
                         @click="callPhone">
                         <div 
-                            class="flex  items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
+                            class="flex items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
                             <span>
                                 {{ t('callMe') }}
                             </span>
-                            <Open
+                            <Open 
                                 class="w-4 h-4"
                             />
                         </div>
                     </li>
-                    <li
-                        class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm "
+                    <li 
+                        class="text-gray-400 hover:text-red-700 dark:hover:text-red-600 text-sm"
                         @click="openTelegram">
                         <div 
-                            class="flex  items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
-                            <span>
-                                {{ t('sayHelloTelegram') }}
-                            </span>
-                            <Open
+                            class="flex items-center gap-x-2 hover:underline hover:underline-offset-2 duration-300 ease-in-out cursor-pointer">
+                            <span>{{ t('sayHelloTelegram') }}</span>
+                            <Open 
                                 class="w-4 h-4"
                             />
                         </div>
@@ -143,23 +124,29 @@
         </div>
         <u-divider
             size="xs"
-            :ui="{
-                border:{
-                    base: 'border-gray-600 dark:border-gray-700'
-                }
-            }">
-            <Pray
-                class="w-5 h-5 text-red-800 dark:text-red-800"
-            />
+            :ui="{ 
+                border:{ 
+                    base: 'border-gray-600 dark:border-gray-700' 
+                }}">
+                <Pray 
+                    class="w-5 h-5 text-red-800 dark:text-red-800"
+                />
         </u-divider>
         <div 
-            class="text-xs text-gray-500">
+            class="text-xs text-gray-500 text-center">
             <p>
-                © {{ t('2025') }} | <span class="text-red-700 dark:text-red-600">{{ t('designFt') }}</span> {{ t('and') }} <span class="text-red-700 dark:text-red-600">{{ t('coded') }}</span> {{  t('byFt') }}
+                © {{ t('2025') }} | 
+                <span 
+                    class="text-red-700 dark:text-red-600">{{ t('designFt') }}</span> 
+                    {{ t('and') }} 
+                    <span 
+                    class="text-red-700 dark:text-red-600">{{ t('coded') }}</span> 
+                    {{ t('byFt') }}
             </p>
         </div>
     </div>
 </template>
+
 
 <script setup lang="ts">
 import { 
@@ -168,8 +155,6 @@ import {
     Github,
     X,
     Open,
-    Telegram,
-    Call,
     Pray
 } from '../icons';
 import { 
@@ -178,7 +163,15 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+
 const { translations, toggleLanguage, t } = useTranslation();
+const props = defineProps({
+  onScrollToSection: Function as PropType<(id: string) => void>
+});
+
+const handleClick = (id: string) => {
+  props.onScrollToSection?.(id);
+};
 
 const media = [
     {
@@ -207,31 +200,30 @@ const media = [
     }
 ]
 
-
 const quickLinks = computed(() => [
     { 
         name: t('home'), 
-        path: '/' 
+        target: '#home' 
     },
     { 
         name: t('about'),
-        path: '/about' 
+        target: '#about' 
     },
     { 
         name: t('achievement'), 
-        path: '/achievements' 
+        target: '#achievement' 
     },
     { 
         name: t('experience'), 
-        path: '/experience' 
+        target: '#experience' 
     },
     { 
         name: t('projects'), 
-        path: '/projects' 
+        target: '#project'
     },
     { 
         name: t('contact'),
-        path: '/contact' 
+        target: '#contact' 
     },
 ]);
 

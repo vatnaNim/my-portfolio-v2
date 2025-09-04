@@ -1,51 +1,50 @@
 <template>
-    <div
-        class="w-full  px-8">
-        <div 
-            class="text-center space-y-2">
-            <p
-                class="text-md font-semibold text-gray-500">
+    <div 
+        class="w-full px-4 sm:px-6 lg:px-8">
+        <div    
+            class="text-center space-y-3">
+            <p 
+                class="text-sm sm:text-md font-semibold text-gray-400">
                 {{ t('titleExp1') }}
             </p>
             <h2
-                class="text-3xl  font-medium tracking-wide text-red-700 dark:text-red-600"
-                :class="translations.language === 'en'? 'logo' : ''">
+                class="text-2xl sm:text-3xl font-medium tracking-wide text-red-700 dark:text-red-600 leading-7 sm:leading-none"
+                :class="translations.language === 'en' ? 'logo' : ''">
                 {{ t('titleExp2') }}
             </h2>
-            <p
-                class="text-md font-semibold text-gray-500 text-wrap">
+            <p 
+                class="text-sm sm:text-md leading-5 sm:leading-none font-normal text-gray-500 dark:text-gray-400">
                 {{ t('titleExp3') }}
             </p>
         </div>
         <div 
-            class="pt-8">
-            <div 
-                class="flex flex-col"
+            class="pt-6 md:pt-8 space-y-3 md:space-y-0">
+            <div
+                class="flex flex-col space-y-8"
                 v-for="(exp, idx) in exp"
                 :key="idx">
-                <article 
-                    :class="idx % 2 === 1 ? 'flex-row-reverse' : 'flex-row'"
-                    class="w-full flex gap-x-4 group">
-                    <div 
-                        class=" flex-1 flex "
-                        :class="idx %2 === 1? 'justify-start' : 'justify-end'">
-                        <div 
-                            class="w-[500px] border border-gray-200  shadow-md rounded-md space-y-4 p-4 
-                            transition duration-300 ease-in-out
-                            hover:shadow-xl hover:-translate-y-2 hover:border-red-700 hover:bg-gray-50 dark:hover:bg-gray-900">
+                <article
+                    class="w-full flex flex-col md:flex-row gap-4 group"
+                    :class="idx % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'">
+                    <div
+                        class="flex-1 flex justify-center md:justify-start"
+                        :class="idx % 2 === 1 ? 'md:justify-start' : 'md:justify-end'">
+                        <div
+                            class="w-full max-w-md border border-gray-200 shadow-md rounded-md space-y-4 p-4
+                                transition duration-300 ease-in-out
+                                hover:shadow-xl hover:-translate-y-2
+                                hover:border-red-700 hover:bg-gray-50 dark:hover:bg-gray-900">
                             <div 
                                 class="flex flex-col gap-y-1.5">
                                 <div 
                                     class="flex items-center gap-x-4">
                                     <div 
                                         class="flex items-center gap-x-2">
-                                        <span>
-                                            <Building
-                                                class="w-5 h-5 text-red-700 dark:text-red-600"
-                                            />
-                                        </span>
-                                        <span
-                                            class="font-semibold text-md uppercase text-gray-500">
+                                        <Building 
+                                            class="w-5 h-5 text-red-700 dark:text-red-600" 
+                                        />
+                                        <span 
+                                            class="font-semibold text-sm sm:text-md uppercase text-gray-500">
                                             {{ exp.companyName }}
                                         </span>
                                     </div>
@@ -53,91 +52,92 @@
                                         :label="exp.shift"
                                         variant="soft"
                                         color="red"
+                                        size="sm"
+                                        :ui="{
+                                            size: {
+                                                sm: 'text-[0.65rem] sm:text-xs'
+                                            }
+                                        }"
                                     />
                                 </div>
-                                <h3
-                                    class="text-lg font-semibold capitalize">
+                                <h3 
+                                    class="text-base sm:text-lg font-semibold capitalize leading-5 sm:leading-tight">
                                     {{ exp.position }}
                                 </h3>
                                 <div 
-                                    class="flex gap-x-3">
-                                    <div 
-                                        class="flex items-center text-sm text-gray-500 gap-x-0.5">
-                                        <span>
-                                            <Date
-                                                class="w-4 h-4"    
-                                            />
-                                        </span>
+                                    class="flex flex-wrap gap-x-3">
+                                    <div
+                                        class="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-600 gap-x-0.5">
+                                        <Date 
+                                            class="w-4 h-4" 
+                                        />
                                         <span>
                                             {{ exp.workTime }}
                                         </span>
                                     </div>
-                                    <div 
-                                        class="flex items-center text-sm text-gray-500 gap-x-0.5">
-                                        <span>
-                                            <Location
-                                                class="w-4 h-4"    
-                                            />
-                                        </span>
+                                    <div
+                                        class="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-600 gap-x-0.5">
+                                        <Location 
+                                            class="w-4 h-4" 
+                                        />
                                         <span>
                                             {{ exp.companyLocation }}
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <p
-                                class="text-sm text-wrap text-gray-500 font-medium">
-                                {{ exp.description || "" }}
+                            <p 
+                                class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
+                                {{ exp.description || '' }}
                             </p>
                             <div 
                                 class="space-y-2">
-                                <div 
-                                    class="flex items-center gap-x-2 text-sm text-black dark:text-white">
-                                    <span>
-                                        <Thunder
-                                            class="w-4 h-4 text-red-700 dark:text-red-600"    
-                                        />
-                                    </span>
-                                    <span
-                                        class="font-medium">
+                                <div
+                                    class="flex items-center gap-x-2 text-xs sm:text-sm text-black dark:text-white">
+                                    <Thunder
+                                        class="w-4 h-4 text-red-700 dark:text-red-600"
+                                    />
+                                    <span class="font-medium">
                                         {{ t('keyAchi') }}
                                     </span>
                                 </div>
-                                <ul
-                                    class="list-disc list-inside text-gray-500 text-sm font-medium"
-                                    v-for="(achievement, i) in exp.keyAchievements" 
-                                    :key="i">
-                                    <li>
-                                        {{ achievement }}
-                                    </li>
-                                </ul>
-                            </div>
+                                <div 
+                                    class="space-y-0 sm:space-y-0.5">
+                                    <ul
+                                        v-for="(achievement, i) in exp.keyAchievements"
+                                        :key="i"
+                                        class="list-disc list-inside text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium">
+                                        <li>{{ achievement }}</li>
+                                    </ul>
+                                </div>
+                            </div> 
                             <div 
                                 class="flex flex-col gap-y-2">
                                 <div 
                                     class="flex items-center gap-x-2">
                                     <div
-                                        class="text-sm flex items-center text-red-700 dark:text-red-600 underline underline-offset-2 cursor-pointer hover:text-gray-600 hover:dark:text-gray-400"
+                                        class="text-xs sm:text-sm flex items-center text-red-700 dark:text-red-600 underline underline-offset-2 cursor-pointer hover:text-gray-600 hover:dark:text-gray-400"
                                         @click="toggleModal(exp.id, true)">
-                                            {{ t('viewMoreBtn') }} →
-                                    </div>    
+                                        {{ t('viewMoreBtn') }} →
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <UDivider 
-                        orientation="vertical" 
-                        size="md">
-                    <Star
-                        class="w-6 h-6 group-hover:text-red-700 dark:group-hover:text-red-600"
-                    />
-                </UDivider>
-                    <div class=" flex-1"></div>
+                    <UDivider
+                        orientation="vertical"
+                        size="md"
+                        class="hidden md:flex">
+                        <Star
+                            class="w-6 h-6 group-hover:text-red-700 dark:group-hover:text-red-600"
+                        />
+                    </UDivider>
+                    <div class="flex-1 hidden md:block"></div>
                 </article>
             </div>
         </div>
-        <p
-            class="text-md font-semibold text-gray-500 text-center pt-4">
+        <p 
+            class="text-sm sm:text-md font-semibold text-gray-400 text-center pt-4">
             {{ t('footer') }}
         </p>
         <ExpModal
@@ -152,8 +152,9 @@
             :responsible="exp.find(e => e.id === modalId)?.responsible"
             @toggle="toggleModal"
         />
-    </div>
+  </div>
 </template>
+
 
 <script setup lang="ts">
 import { 

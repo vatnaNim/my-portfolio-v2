@@ -69,6 +69,7 @@ import Unsuccess from "./unsuccess.vue";
 import Mailinfo from "./mailinfo.vue";
 import X from "./x.vue";
 import Pray from "./pray.vue";
+import ArrowAnimation from "./arrow-animation.vue";
 
 export {
     Html,
@@ -141,5 +142,6 @@ export {
     Unsuccess,
     Mailinfo,
     X,
-    Pray
+    Pray,
+    ArrowAnimation
 }

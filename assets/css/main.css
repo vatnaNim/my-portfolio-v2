@@ -9,6 +9,8 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-weight: 400;
+    scrollbar-width: thin;
+    scrollbar-color: #9ca3af rgba(0, 0, 0, 0.08);
 }
 
 .logo {
@@ -48,11 +50,62 @@ body {
 
 .typing {
   border-right: .1em solid black;
-  width: 13ch; /* 21 characters wide */
+  width: 13ch; 
   white-space: nowrap;
   overflow: hidden;
   -webkit-animation: typing 3s steps(13, end), 
                      blink-caret .5s step-end infinite alternate;
   animation: typing 2s steps(13, end), 
              blink-caret .5s step-end infinite alternate;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    width: 10px;
+    height: 12px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.06);
+    
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+    background: #9ca3af; 
+    border: 3px solid rgba(0,0,0,0.06);
+    background-clip: padding-box;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+    background: #b91c1c; 
+    transform: scale(1.05);
+}
+
+html::-webkit-scrollbar-thumb:active,
+body::-webkit-scrollbar-thumb:active {
+    background: #dc2626;
+}
+
+.dark html, .dark body {
+    scrollbar-color: #6b7280 rgba(255,255,255,0.04);
+}
+
+.dark html::-webkit-scrollbar-track,
+.dark body::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.03);
+}
+
+.dark html::-webkit-scrollbar-thumb,
+.dark body::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border: 3px solid rgba(255,255,255,0.03);
+}
+
+.dark html::-webkit-scrollbar-thumb:hover,
+.dark body::-webkit-scrollbar-thumb:hover {
+    background: #ef4444;
 }

@@ -8,22 +8,28 @@
         </div>
         <div 
             class="hidden md:flex gap-x-4 lg:gap-x-8 px-3 lg:px-4 py-2 rounded-md backdrop-blur-md border shadow-md bg-gray-400/20 border-white/20 dark:bg-gray-800/30 dark:border-gray-400 text-black dark:text-gray-200 text-xs lg:text-md">
-            <ul
-                v-for="(list, idx) in navList"
+            <ul 
+                v-for="(list, idx) in navList" 
                 :key="idx">
                 <li
-                    class="flex items-center gap-x-0.5 lg:gap-x-1">
+                    @click="scrollToSection(list.target)"
+                    class="flex items-center gap-x-0.5 lg:gap-x-1 cursor-pointer group"
+                    :class="selectedSection === list.target ? 'text-red-700 dark:text-red-600' : ''">
                     <component
                         :is="list.icon"
-                        class="w-6 h-5 inline-block" />
-                    <span>
+                        class="w-6 h-5 inline-block"
+                    />
+                    <span 
+                        class="relative inline-block ml-1">
                         {{ list.name }}
+                        <span
+                            class="absolute left-1/2 bottom-[-4px] h-[2px] w-0 bg-red-700 dark:bg-red-600 transition-all duration-300 group-hover:w-full group-hover:-translate-x-1/2"></span>
                     </span>
                 </li>
             </ul>
         </div>
         <div 
-            class="space-x-1">
+            class=" space-x-0.5 sm:space-x-1">
             <u-tooltip
                 :text="translations.language === 'en' ? t('languageBtnKh') : t('languageBtnEn')"
                 :popper="{
@@ -47,8 +53,8 @@
                         }
                     }">
                     <component
-                        :is="translations.language === 'en' ? Cambodia : English"
-                        class="w-6 h-6 inline-block" />
+                        :is="translations.language === 'en' ? English : Cambodia"
+                        class="md:w-6 md:h-6 w-5 h-5 inline-block" />
                 </u-button>
             </u-tooltip>
             <u-tooltip
@@ -75,11 +81,11 @@
                     }">
                     <component
                         :is="darkColor ? Day : Dark"
-                        class="w-6 h-6 inline-block" />
+                        class="md:w-6 md:h-6 w-5 h-5 inline-block" />
                 </u-button>
             </u-tooltip>
             <u-tooltip
-                text="bar"
+                :text="t('menu')"
                 :popper="{
                     placement: 'bottom',
                     offset: [0, 8]
@@ -102,7 +108,7 @@
                         }
                     }">
                     <Bar
-                        class="w-6 h-6 inline-block rotate-180"/>
+                        class="md:w-6 md:h-6 w-5 h-5 inline-block rotate-180"/>
                 </u-button>
             </u-tooltip>
         </div>
@@ -118,9 +124,9 @@
             <div
                 class="flex flex-col justify-between h-full py-2">
                 <div 
-                    class="h-14 flex items-center justify-between px-2 border-b border-gray-500">
+                    class="h-14 flex items-center justify-between px-2 border-b border-gray-500 dark:border-gray-400">
                     <h2
-                        class="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                        class="text-md sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
                         {{ translations.language === 'en' ? 'Quick Navigation' : 'ការរុករករហ័ស' }}
                     </h2>
                     <u-tooltip
@@ -157,19 +163,22 @@
                         v-for="(list, idx) in navList"
                         :key="idx">
                         <li
-                            class="flex items-center justify-between px-2 py-2 rounded-md hover:bg-gray-900 hover:text-gray-200 duration-200 hover:shadow-md hover:dark:bg-gray-200 hover:dark:text-gray-900 cursor-pointer">
+                            @click="scrollToSection(list.target)"
+                            class="flex items-center justify-between px-2 py-1 sm:py-2 rounded-md hover:bg-gray-900  duration-200 hover:shadow-md hover:dark:bg-gray-200  cursor-pointer"
+                            :class="selectedSection === list.target ? 'text-red-700 dark:text-red-600 hover:text-red-700 dark:hover:text-red-600' : 'hover:text-gray-200 hover:dark:text-gray-900' ">
                             <span>
                                 <component
                                     :is="list.icon"
-                                    class="w-6 h-6 inline-block mr-2" 
+                                    class="w-5 h-6 sm:w-6 sm:h-6 inline-block mr-2" 
                                 />
-                                <span>
+                                <span
+                                    class=" text-sm md:text-md">
                                     {{ list.name }}
                                 </span>
                             </span>
                             <span>
                                 <SharpArrow
-                                    class="w-4 h-4 inline-block "    
+                                    class="w-3 h-3 sm:w-4 sm:h-4 inline-block "    
                                 />
                             </span>
                         </li>
@@ -180,10 +189,10 @@
                     <span
                         class="text-sm space-x-2 flex items-center">
                         <DateIcon
-                            class="text-green-500 w-5 h-5"/>
+                            class="text-red-700 dark:text-red-600 w-4 h-4 sm:w-5 sm:h-5"/>
                         <span
-                            class="text-gray-800 dark:text-gray-200 text-md font-bold">
-                             {{ formattedDate }}
+                            class="text-gray-800 dark:text-gray-200 text-sm sm:text-md font-semibold">
+                            {{ formattedDate }}
                         </span>
                     </span>
                 </div>
@@ -214,41 +223,49 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+import { 
+    useRouter,
+    useRoute 
+} from 'vue-router'
 
+const router = useRouter();
+const route = useRoute();
 
 const { darkColor, toggle } = useCustomColorMode();
 const { translations, toggleLanguage, t } = useTranslation();
+const selectedSection: Ref<string> = ref<string>('#home');
+
 
 const navList = computed(() => [
     { 
         name: t('home'), 
         icon: Home, 
-        path: '/' 
+        target: '#home' 
     },
     { 
         name: t('about'),
         icon: About,
-        path: '/about' 
+        target: '#about' 
     },
     { 
         name: t('achievement'), 
         icon: Achievement, 
-        path: '/achievements' 
+        target: '#achievement' 
     },
     { 
         name: t('experience'), 
         icon: Experience, 
-        path: '/experience' 
+        target: '#experience'
     },
     { 
         name: t('projects'), 
         icon: Project, 
-        path: '/projects' 
+        target: '#project' 
     },
     { 
         name: t('contact'),
         icon: Contact,
-        path: '/contact' 
+        target: '#contact' 
     },
 ]);
 
@@ -296,6 +313,49 @@ const formattedDate = computed(() => {
 
     return `${weekday} ទី ${day} ខែ ${month} ឆ្នាំ ${year}`;
 });
+
+const scrollToSection = (id: string): void => {
+  if (route.path !== '/' && id === '#home') 
+  {
+    router.push('/').then(() => {
+    setTimeout((): void => {
+            const el = document.querySelector(id)
+            if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+    })
+    } else {
+        const el = document.querySelector(id)
+        if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+    selectedSection.value = id
+}
+
+defineExpose({
+    scrollToSection
+})
+
+onMounted((): void => {
+    if (route.path !== "/") return; 
+
+    const sections = navList.value
+        .map(item => document.querySelector(item.target))
+        .filter((el): el is Element => el !== null);
+
+    const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                selectedSection.value = `#${entry.target.id}`;
+                }
+            });
+        },
+        {
+            root: null,         
+            threshold: 0.6      
+        }
+    );
+    sections.forEach((section) => observer.observe(section));
+});
+
 
 </script>
 

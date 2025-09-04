@@ -1,33 +1,36 @@
 <template>
     <div
-        class="w-full px-8 py-10 space-y-16">
+        class="w-full px-4 md:px-8 py-10 space-y-4 lg:space-y-16">
         <div 
             class="flex justify-center flex-col items-center gap-y-3">
             <h2
-                class="text-3xl  font-medium  text-red-700 dark:text-red-600"
-                :class="translations.language === 'en'? 'logo tracking-wider' : 'tracking-wider'">
+                class="text-2xl sm:text-3xl font-medium tracking-wide text-red-700 dark:text-red-600 leading-7 sm:leading-none"
+                :class="translations.language === 'en'? 'logo ' : ''">
                 {{ t('contactTitle1') }}
             </h2>
             <p
-                class="max-w-[500px] text-wrap text-sm font-semibold text-gray-500 text-center">
+                class="max-w-[500px] text-sm sm:text-md leading-5 sm:leading-normal font-normal text-gray-500 dark:text-gray-400 text-center">
                 {{ t('contactTitle2') }}
             </p>
         </div>
         <div 
-            class="flex gap-x-4">
+            class="flex flex-col lg:flex-row gap-y-3 lg:gap-y-0 gap-x-2 lg:gap-x-4">
             <div 
-                class="flex flex-col gap-y-2 w-[50%]">
+                class="flex flex-col gap-y-2 w-full lg:w-[50%]">
                 <div 
                     class="flex justify-center items-center">
                     <UTabs 
                         v-model="selectedTab"
                         :items="tabTtems"
+                        
                         :ui="{
                             list: {
-                                width: 'w-64',
+                                width: 'w-52 sm:w-64',
                                 background: 'bg-gray-300 dark:bg-gray-800',
+                                padding: 'px-0.5 py-0.5 sm:py-1 sm:px-1 ',
                                 tab: {
                                     active: 'bg-gray-900 dark:bg-gray-300 text-white dark:text-black',
+                                    size: 'text-[0.70rem] sm:text-sm',
                                 }
                             },
                         }">
@@ -55,9 +58,9 @@
                         <div 
                             class="space-y-4">
                             <div 
-                                class="leading-3">
+                                class="leading-6 sm:leading-3">
                                 <h4
-                                    class="text-lg font-semibold capitalize "
+                                    class="text-md sm:text-lg font-semibold capitalize "
                                     :class="isSubmitting? 'text-red-700 dark:text-red-600' : 'text-black dark:text-white'">
                                     {{ isSubmitting? t('sendingEmail') : t('sendEmail') }}
                                 </h4>
@@ -69,17 +72,21 @@
                             <UForm 
                                 :validate="validate" 
                                 :state="state" 
-                                class="space-y-3" 
+                                class="space-y-2 md:space-y-3" 
                                 @submit="onSubmit">
                                 <div 
-                                    class="w-full flex gap-x-2">
+                                    class="w-full flex gap-x-1 sm:gap-x-2">
                                     <u-form-group
                                         :label="t('nameCon')"
+                                        size="md"
                                         :ui="{
-                                            base: 'font-semibold'
+                                            base: 'font-semibold',
+                                            size: {
+                                                'md': 'text-xs sm:text-sm'
+                                            }
                                         }"
                                         required
-                                        class="shrink w-64">
+                                        class="shrink w-28 xs:w-40 sm:w-64">
                                         <u-input
                                             type="text"
                                             name="fullname"
@@ -95,6 +102,9 @@
                                                     gray:{
                                                         outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
                                                     }
+                                                },
+                                                size: {
+                                                    'sm': 'text-xs sm:text-sm'
                                                 }
                                             }"
                                             class="caret-red-700"
@@ -102,8 +112,12 @@
                                     </u-form-group>
                                     <u-form-group
                                         :label="t('email')"
+                                        size="md"
                                         :ui="{
-                                            base: 'font-semibold'
+                                            base: 'font-semibold',
+                                            size: {
+                                                'md': 'text-xs sm:text-sm'
+                                            }
                                         }"
                                         required
                                         class="flex-1">
@@ -122,6 +136,9 @@
                                                     gray:{
                                                         outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
                                                     }
+                                                },
+                                                size: {
+                                                    'sm': 'text-xs sm:text-sm'
                                                 }
                                             }"
                                             class="caret-red-700"
@@ -130,8 +147,12 @@
                                 </div>
                                 <u-form-group
                                     :label="t('subject')"
+                                    size="md"
                                     :ui="{
-                                        base: 'font-semibold'
+                                        base: 'font-semibold',
+                                        size: {
+                                            'md': 'text-xs sm:text-sm'
+                                        }
                                     }"
                                     required
                                     class="flex-1">
@@ -150,6 +171,9 @@
                                                 gray:{
                                                     outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
                                                 }
+                                            },
+                                            size: {
+                                                'sm': 'text-xs sm:text-sm'
                                             }
                                         }"
                                         class="caret-red-700"
@@ -157,9 +181,13 @@
                                 </u-form-group>
                                 <u-form-group
                                     :label="t('message')"
-                                    :ui="{
-                                        base: 'font-semibold'
-                                    }"
+                                    size="md"
+                                        :ui="{
+                                            base: 'font-semibold',
+                                            size: {
+                                                'md': 'text-xs sm:text-sm'
+                                            },
+                                        }"
                                     required
                                     class="flex-1">
                                     <u-textarea
@@ -168,6 +196,7 @@
                                         :disabled="isSubmitting"
                                         :rows="3"
                                         color="gray"
+                                        size="md"
                                         variant="outline"
                                         v-model="state.message"
                                         :ui="{
@@ -175,6 +204,9 @@
                                                 gray:{
                                                     outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
                                                 }
+                                            },
+                                            size: {
+                                                'md': 'text-xs sm:text-sm'
                                             }
                                         }"
                                         class="caret-red-700"
@@ -184,6 +216,11 @@
                                     size="md"
                                     color="black"
                                     type="submit"
+                                    :ui="{
+                                        size: {
+                                            'md': 'text-xs sm:text-sm'
+                                        }
+                                    }"
                                     block
                                     :disabled="isSubmitting">
                                     <div class="flex items-center gap-x-2">
@@ -199,10 +236,11 @@
                         v-else-if="selectedTab === 1"
                         class="border shadow-md rounded-md w-full px-4 py-3 space-y-2 flex flex-col items-center justify-center">
                         <h3 
-                            class="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                            class="text-md sm:text-lg font-semibold text-gray-900 dark:text-gray-100">
                             {{ t('supportMe') }}
                         </h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 text-center">
+                        <p 
+                            class="text-sm text-gray-500 dark:text-gray-400 text-center leading-4 sm:leading-normal ">
                             {{ t('contactTitle3') }}
                         </p>
                         <div 
@@ -226,17 +264,17 @@
                 </Transition>
             </div>
             <div 
-                class=" w-[50%] flex flex-col gap-y-4">
+                class="w-full lg:w-[50%] flex flex-col gap-y-3 sm:gap-y-4">
                 <div 
                     class="border shadow-md rounded-md w-full px-4 py-3 space-y-3">
                     <div 
-                        class="leading-4">
+                        class="leading-6 sm:leading-4">
                         <h4
-                            class="text-lg font-semibold text-black dark:text-white">
+                            class="text-md sm:text-lg font-semibold text-black dark:text-white">
                             {{ t('getInTouch') }}
                         </h4>
                         <p
-                            class="text-xs text-gray-500">
+                            class="text-xs text-gray-500 dark:text-gray-400">
                             {{ t('getInTouch2') }}
                         </p>
                     </div>
@@ -272,22 +310,22 @@
                             </div>
                             <div>
                                 <ForwardArrow
-                                    class="w-5 h-5 text-gray-400 dark:text-gray-500 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300"
+                                    class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 dark:text-gray-500 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300"
                                 />
                             </div>
                         </article>
                     </div>
                 </div>
                 <div 
-                    class="border shadow-md rounded-md w-full px-4 py-3 space-y-3">
+                    class="border shadow-md rounded-md w-full px-4 py-3 space-y-4">
                     <div 
-                        class="leading-4">
+                        class="leading-6 sm:leading-4">
                         <h4
-                            class="text-lg font-semibold capitalize text-black dark:text-white">
+                            class="text-md sm:text-lg font-semibold capitalize text-black dark:text-white">
                             {{ t('connectWithMe') }}
                         </h4>
                         <p
-                            class="text-sm text-gray-500">
+                            class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-4 sm:leading-normal">
                             {{  t('connectWithMe2') }}
                         </p>
                     </div>
@@ -403,7 +441,7 @@ const socalMedia = [
         name: "Github",
         icon: Github,
         link: "https://github.com/vatnaNim",
-        color: "text-gray-800 hover:text-black",
+        color: "text-gray-800 dark:text-white hover:text-black",
     },
     {
         id: 4,

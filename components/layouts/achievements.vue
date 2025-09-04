@@ -1,33 +1,32 @@
 <template>
     <div
-        class="w-full min-h-[90vh] px-8 space-y-4">
+        class="w-full min-h-[90vh] px-4 md:px-8 space-y-3">
         <h2
-            class="text-4xl font-medium text-red-700 dark:text-red-600"
-            :class="translations.language === 'en'? 'logo  tracking-wide' : ' tracking-normal'">
+            class="text-red-700 dark:text-red-600 lg:text-start text-center"
+            :class="translations.language === 'en'? 'logo text-2xl sm:text-3xl lg:text-4xl font-medium  tracking-wide' : 'font-semibold text-2xl md:text-3xl'">
             {{ t('education') }} {{ t('&') }} {{ t('certifications') }}
         </h2>
         <div
-            class="flex gap-x-4 ">
+            class="flex flex-col lg:flex-row gap-y-8 lg:gap-y-4 gap-x-0 lg:gap-x-4">
             <div 
-                class="w-[50%] ">
+                class="w-full lg:w-[50%] ">
                 <h3
-                    class="flex gap-x-4 items-center">
-                    <span
-                        class="">
+                    class="flex gap-x-2 lg:gap-x-3 items-center lg:justify-start justify-center">
+                    <span>
                         <Edcation
-                            class="w-10 h-10 text-red-700 dark:text-red-600"
+                            class="w-7 h-7 sm:w-8 sm:h-8 text-red-700 dark:text-red-600"
                         />
                     </span>
                     <span
-                        class=" tracking-wide font-semibold uppercase"
-                        :class="translations.language === 'en'? 'text-2xl' : 'text-3xl'">
+                        class="uppercase"
+                        :class="translations.language === 'en'? 'text-xl md:text-2xl tracking-wide font-semibold' : 'text-xl sm:text-2xl md:text-3xl font-semibold '">
                         {{ t('education') }}
                     </span>
                 </h3>
                 <div 
-                    class="flex flex-col gap-y-4 mt-3">
+                    class="flex flex-col gap-y-2 md:gap-y-3 mt-3">
                     <div 
-                        class="relative bg-gray-500/10 dark:bg-white/5 backdrop-blur-sm shadow-lg p-6  flex flex-1 flex-col sm:flex-row items-center gap-x-3 lg:gap-x-4 py-2 lg:py-3 px-3 lg:px-4 rounded-lg border transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer"
+                        class="relative bg-gray-500/10 dark:bg-white/5 backdrop-blur-sm shadow-lg  flex flex-1 flex-col sm:flex-row items-center gap-y-1 sm:gap-x-3 lg:gap-x-4 py-3 px-3 lg:px-4 rounded-lg border transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer"
                         v-for="(item, idx) in edcationDb"
                         :key="idx">
                         <span 
@@ -46,47 +45,48 @@
                         </div>
                         <div
                             v-else 
-                            class="w-20 h-20 rounded-full flex justify-center items-center text-white bg-gray-900">
+                            class="md:w-16 md:h-16 w-14 h-14   rounded-full flex justify-center items-center text-white bg-gray-900">
                             <NoImage
-                                class="w-6 h-6 object-fill"
+                                class="sm:w-6 sm:h-6 w-5 h-5 object-fill"
                             />
                         </div>
-                        <div>
-                            <h3 class="font-medium text-lg">
+                        <div
+                            class="text-center sm:text-start">
+                            <h3 class="font-medium text-md sm:text-lg">
                                 {{ item.schoolName }}
                             </h3>
-                            <p className="text-sm text-gray-500 mt-2">
+                            <p class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-1">
                                 {{ item.year }}
                             </p>
-                            <p className="text-sm text-gray-500 italic">
+                            <p class="text-xs sm:text-sm text-gray-500 italic">
                                 {{ item.degree }}
                             </p>
                         </div>
                     </div>
+                </div>
             </div>
-        </div>
             <div 
-                class="w-[50%] border-l-2 border-gray-300 pl-4">
+                class="w-full lg:w-[50%] border-0 lg:border-l-2 border-gray-300 pl-0 lg:pl-4">
                 <h3
-                    class="flex gap-x-4 items-center">
+                    class="flex gap-x-2 lg:gap-x-3 items-center lg:justify-start justify-center pb-3 lg:pb-0">
                     <span
                         class="">
                         <Certificates
-                            class="w-8 h-8 text-red-700 dark:text-red-600"
+                            class="w-7 h-7 sm:w-8 sm:h-8 text-red-700 dark:text-red-600"
                         />
                     </span>
                     <span
-                        class=" tracking-wide font-semibold uppercase"
-                        :class="translations.language === 'en'? 'text-2xl' : 'text-3xl'">
+                        class="uppercase"
+                        :class="translations.language === 'en'? 'text-xl md:text-2xl tracking-wide font-semibold' : 'text-xl sm:text-2xl md:text-3xl font-semibold '">
                         {{ t('certifications') }}
                     </span>
                 </h3>
                 <div 
-                    class="flex flex-col gap-y-4 mt-4">
+                    class="flex flex-col gap-y-2 sm:gap-y-4 mt-2 sm:mt-4">
                     <div 
                         class="relative bg-gray-500/10 dark:bg-white/5 backdrop-blur-sm shadow-lg 
-                            p-6 flex flex-col gap-y-0.5 rounded-lg border transition-all duration-300 
-                            hover:shadow-2xl hover:scale-[1.02] cursor-pointer"
+                            px-5 py-3 flex flex-col  rounded-lg border transition-all duration-300 
+                            hover:shadow-2xl hover:scale-[1.02] cursor-pointer items-center sm:items-start"
                             v-for="(cert, idx) in paginatedCertificates"
                             :key="idx">
                         <span 
@@ -95,29 +95,32 @@
                             🏅
                         </span>
                         <h4 
-                            class="font-semibold text-lg text-gray-800 dark:text-gray-200">
+                            class="text-center sm:text-start font-semibold text-md sm:text-lg text-gray-800 dark:text-gray-200 pb-1">
                             {{ cert.title }}
                         </h4>
-                        <p 
-                            class="text-sm text-gray-600 dark:text-gray-400">
-                            {{ cert.detail }}
-                        </p>
-                        <p class="text-xs text-gray-500 italic">
-                            {{ cert.year }}
-                        </p>
+                        <div 
+                            class="text-center sm:text-start">
+                            <p 
+                                class="text-xs sm:text-sm text-gray-600 dark:text-gray-500 ">
+                                {{ cert.detail }}
+                            </p>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-500 italic">
+                                {{ cert.year }}
+                            </p>
+                        </div>
                         <div 
                             v-if="cert.imageUrl"
-                            class="mt-3 flex gap-x-2">
+                            class="mt-1 sm:mt-2 flex gap-x-1 md:gap-x-2">
                             <u-button
                                 size="sm"
                                 color="black"
-                                 :key="cert.id"
-  @click="viewCert(cert)">
+                                :key="cert.id"
+                                @click="viewCert(cert)">
                                 <Eye 
-                                    class="w-5 h-5"
+                                    class="md:w-5 md:h-5 h-4 w-4"
                                 />
                                 <span 
-                                    class="text-sm tracking-wide">
+                                    class="text-xs md:text-sm tracking-wide">
                                     {{ t('view') }}
                                 </span>
                             </u-button>
@@ -127,10 +130,10 @@
                                 :to="cert.imageUrl"
                                 target="_blank">
                                 <Pdf 
-                                    class="w-5 h-5"
+                                    class="md:w-5 md:h-5 h-4 w-4"
                                 />
                                 <span   
-                                    class="text-sm tracking-wide">
+                                    class="text-xs md:text-sm tracking-wide">
                                     PDF
                                 </span>
                             </u-button>
@@ -144,13 +147,14 @@
                             :page-count="pageSize"
                             :ui="{ 
                                 rounded: 'first-of-type:rounded-s-md last-of-type:rounded-e-md',
+                                base: 'sm:text-md text-sm',
                                 default: {
                                     activeButton: {
-                                        color: 'black'
+                                        class: 'bg-red-700 dark:bg-red-600'
                                     },
                                     inactiveButton: {
-                                        color: 'black'
-                                    }
+                                        class: 'bg-white dark:bg-black'
+                                    },
                                 } 
                             }">
                             <template 
