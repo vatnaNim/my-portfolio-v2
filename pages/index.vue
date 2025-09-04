@@ -70,6 +70,15 @@ const scrollToHome = (): void => {
         el.scrollIntoView({ behavior: 'smooth' });
     }
 };
+
+useSeoMeta({
+    title: 'Vatna Porftolio',
+    ogTitle: 'Vatna Porftolio',
+    description: 'Vatna Porftolioto build scalable applications, while always paying attention to detail and user experience. Every project is an opportunity to grow, learn, and create something impactful',
+    ogDescription: 'to build scalable applications, while always paying attention to detail and user experience. Every project is an opportunity to grow, learn, and create something impactful',
+    ogImage: 'https://res.cloudinary.com/doleyeec5/image/upload/v1757003567/IMG_3819_mhdc4c.webp',
+    twitterCard: 'summary_large_image',
+})
 </script>
 
 <style scoped>

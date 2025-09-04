@@ -254,7 +254,7 @@
                                 />
                             </div>
                             <img 
-                                src="https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756477539/IMG_5829_hf4ugl.jpg" 
+                                src="https://res.cloudinary.com/doleyeec5/image/upload/v1757004567/IMG_5829_xjlbpr.jpg" 
                                 alt="ABA QR CODE"
                                 class="w-full h-full"
                                 @load="handleQrLoad"    
@@ -426,14 +426,14 @@ const socalMedia = [
         id: 1,
         name: "Facebook",
         icon: Facebook,
-        link: "https://web.facebook.com/vatna.nim",
+        link: "https://www.facebook.com/share/1F7biHdp8V/?mibextid=wwXIfr",
         color: "text-blue-600 hover:text-blue-700",
     },
     {
         id: 2,
         name: "Linkedin",
         icon: Linkedin,
-        link: "https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile",
+        link: "http://linkedin.com/in/vatna-nim-6a2a74359",
         color: "text-blue-600 hover:text-blue-700",
     },
     {

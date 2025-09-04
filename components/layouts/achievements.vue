@@ -150,7 +150,7 @@
                                 base: 'sm:text-md text-sm',
                                 default: {
                                     activeButton: {
-                                        class: 'bg-red-700 dark:bg-red-600'
+                                        class: 'bg-red-700 dark:bg-red-600 hover:bg-red-800 dark:hover:bg-red-700'
                                     },
                                     inactiveButton: {
                                         class: 'bg-white dark:bg-black'
@@ -256,34 +256,35 @@ const certificates = computed(() => [
         title: t('royelUniversity'),
         detail: t('royelmajor'),
         year: t('royelCertYear'),
+        imageUrl: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004743/Sans_esgogema_i4dery.webp"
     },
     {
         id: 2,
         title: t('toulTompong'),
         detail: t('bacll'),
         year: t('highschoolYear'),
-        imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756130708/BACLL_urrdcm.jpg"
+        imageUrl: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004281/BACLL_fww7wj.jpg"
     },
     {
         id: 3,
         title: t('beltei'),
         detail: t('belteimajor'),
         year: t('year12'),
-        imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756130909/ESL_awas3i.jpg"
+        imageUrl: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004279/ESL_h00cue.jpg"
     },
     {
         id: 4,
         title:  t('beltei'),
         detail: t('belteimajor6'),
         year: t('year6'),
-        imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756157462/IMG_5820_kywq3w.webp"
+        imageUrl: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004845/IMG_5820_a0hbc9.webp"
     },
     {
         id: 5,
         title: t('computerSchool'),
         detail: "Miscrosoft Officer",
         year: t('computerYear'),
-        imageUrl: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756130941/computer_kpxr13.jpg"
+        imageUrl: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004281/computer_mdqxis.jpg"
     },
 ])
 

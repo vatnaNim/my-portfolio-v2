@@ -102,7 +102,7 @@
                 class="">
                 <div class="flex items-center gap-x-1 lg:gap-x-2">
                     <u-tooltip
-                        :text="t('contactme')"
+                        :text="t('callMe')"
                         :ui="{
                             base: 'capitalize'
                         }"
@@ -112,6 +112,7 @@
                         <u-button
                             size="md"
                             variant="solid"
+                            @click="callMe"
                             :color="darkColor ? 'gray' : 'black'"
                             :ui="{
                                 padding: {
@@ -124,13 +125,13 @@
                                     'md': 'text-sm lg:text-md'
                                 }
                             }">
-                            <LongArrow
+                            <Call
                                 class="w-5 lg:w-6 h-5 lg:h-6 text-gray-200"
                             />
                             <span
                                 class=" font-semibold capitalize text-wrap"
                                 :class="translations.language === 'en'? 'text-xs md:text-sm lg:text-md' : 'text-[0.65rem] md:text-[0.70rem] lg:text-md'">
-                                {{ t('contactme') }}
+                                {{ t('callMe') }}
                             </span>
                         </u-button>
                     </u-tooltip>
@@ -237,7 +238,7 @@
             <div 
                 class="animated-card relative w-[90vw] max-w-[300px] sm:w-[300px] h-[400px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl group mx-auto">
                 <img
-                    src="https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756829107/IMG_3819_ewhamp.webp"
+                    src="https://res.cloudinary.com/doleyeec5/image/upload/v1757003567/IMG_3819_mhdc4c.webp"
                     alt="Nim Vatna"
                     class="w-full h-full object-cover rounded-2xl transition-all duration-500 group-hover:blur-sm"
                 />
@@ -254,11 +255,14 @@
                     :class="translations.language === 'en' ? 'text-xs sm:text-sm' : 'text-[0.75rem] md:text-sm'">
                     {{ t('position') }}
                 </span>
-                <button 
-                    class=" uppercase bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-md hover:scale-105 transition-transform w-full sm:w-auto"
-                    :class="translations.language === 'en' ? 'text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-1.5' : 'text-[0.65rem] sm:text-[0.70rem] px-3 py-2 sm:px-4 sm:py-2'">
-                    {{ t('contactme') }}
-                </button>
+                <NuxtLink
+                    to="#contact">
+                    <button 
+                        class=" uppercase bg-gradient-to-r from-red-500 to-red-700 text-white rounded-lg shadow-md hover:scale-105 transition-transform w-full sm:w-auto"
+                        :class="translations.language === 'en' ? 'text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-1.5' : 'text-[0.65rem] sm:text-[0.70rem] px-3 py-2 sm:px-4 sm:py-2'">
+                        {{ t('contactme') }}
+                    </button>
+                </NuxtLink>
             </div>
             </div>
 
@@ -280,7 +284,8 @@ import {
     Location,
     Chat,
     Experience,
-    Dot
+    Dot,
+    Call
 } from '../icons';
 import {
     useCustomColorMode
@@ -294,25 +299,25 @@ const mySocialMedia = [
     {
         id: 1,
         name: "Facebook",
-        link: "https://www.facebook.com/nim.vatna.7",
+        link: "https://www.facebook.com/share/1F7biHdp8V/?mibextid=wwXIfr",
         icon: Facebook
     },
     {
         id: 2,
         name: "Linkedin",
-        link: "https://www.facebook.com/nim.vatna.7",
+        link: "http://linkedin.com/in/vatna-nim-6a2a74359",
         icon: Linkedin
     },
     {
         id: 3,
         name: "Github",
-        link: "https://www.facebook.com/nim.vatna.7",
+        link: "https://github.com/vatnaNim",
         icon: GithubLogo
     },
     {
         id: 4,
         name: "Telegram",
-        link: "https://www.facebook.com/nim.vatna.7",
+        link: "",
         icon: Telegram
     },
 ]
@@ -331,6 +336,11 @@ const openTelegram = (): void => {
 const downloadPdf = (): void => {
     const pdfUrl = '/films/NimVatnaResume.pdf'
     downloadFile(pdfUrl, 'NimVatnaResume.pdf')
+}
+
+const callMe = (): void => {
+    const phoneNumber = "+85595872770";
+    window.location.href = `tel:${phoneNumber}`
 }
 
 </script>
@@ -366,35 +376,35 @@ const downloadPdf = (): void => {
     animation: slide-down 5s infinite;
 }
 .animated-card {
-  transform-style: preserve-3d;
-  animation: floatRotate 6s ease-in-out infinite alternate;
+    transform-style: preserve-3d;
+    animation: floatRotate 6s ease-in-out infinite alternate;
 }
 
 @keyframes floatRotate {
-  0% {
-    transform: rotateY(0deg) rotateX(0deg) translateY(0px);
-  }
-  50% {
-    transform: rotateY(15deg) rotateX(10deg) translateY(-10px);
-  }
-  100% {
-    transform: rotateY(0deg) rotateX(0deg) translateY(0px);
-  }
+    0% {
+        transform: rotateY(0deg) rotateX(0deg) translateY(0px);
+    }
+    50% {
+        transform: rotateY(15deg) rotateX(10deg) translateY(-10px);
+    }
+    100% {
+        transform: rotateY(0deg) rotateX(0deg) translateY(0px);
+    }
 }
 
 @keyframes shine {
-  0% {
-    transform: translateX(-100%) rotate(45deg);
-  }
-  100% {
-    transform: translateX(300%) rotate(45deg);
-  }
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(300%) rotate(45deg);
+    }
 }
 
 .animate-shine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
-  animation: shine 2.5s linear infinite;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    animation: shine 2.5s linear infinite;
 }
 </style>

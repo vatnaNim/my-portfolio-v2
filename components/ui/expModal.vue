@@ -70,10 +70,13 @@
                     class="flex justify-center md:w-[40%]">
                     <div 
                         class="w-full max-w-xs sm:max-w-sm aspect-[3/4] bg-white dark:bg-gray-900 overflow-hidden flex justify-center items-center">
-                        <Modal
-                            v-if="loading && imageUrl"
-                            class="w-14 h-14 text-red-700 dark:text-red-600"
-                        />
+                        <div
+                            v-if="loading && imageUrl" 
+                            class="w-full h-full flex justify-center items-center">
+                            <Modal
+                                class="w-14 h-14 text-red-700 dark:text-red-600"
+                            />
+                        </div>
                         <img 
                             v-if="props.imageUrl"
                             :src="imageUrl" 
@@ -210,26 +213,39 @@ const handleError = (): void => {
 <style>
 
 .scrollable::-webkit-scrollbar {
-  width: 8px; 
+  width: 8px;
 }
 
 .scrollable::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 
 .scrollable::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
-  border-radius: 9999px; 
-  border: 2px solid transparent; 
+  background-color: #b91c1c; 
+  border-radius: 9999px;
+  border: 2px solid transparent;
 }
 
 .scrollable::-webkit-scrollbar-thumb:hover {
-  background-color: #9ca3af; 
+  background-color: #b91c1c; 
+}
+
+.dark .scrollable::-webkit-scrollbar-thumb {
+  background-color: #dc2626; 
+}
+
+.dark .scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: #dc2626; 
 }
 
 .scrollable {
   scrollbar-width: thin;
-  scrollbar-color: #9ca3af transparent;
+  scrollbar-color: #b91c1c transparent; 
 }
+
+.dark .scrollable {
+  scrollbar-color: #dc2626 transparent; 
+}
+
 
 </style>

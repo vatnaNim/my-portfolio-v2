@@ -150,7 +150,7 @@
             v-model="openModal" 
             fullscreen>
             <div 
-                class="overflow-y-auto">
+                class="overflow-y-auto pb-4 md:pb-12">
                 <div 
                     class="px-4 py-4 flex items-center justify-between">
                     <div 
@@ -202,7 +202,22 @@
                                 ref="carouselRef"
                                 v-slot="{ item }"
                                 :items="demoImage"
-                                :ui="{ item: 'basis-full', indicators: { active: 'bg-red-700' } }"
+                                :ui="{ 
+                                    item: 'basis-full', 
+                                    indicators: { 
+                                        wrapper: 'absolute flex items-center justify-center gap-2 sm:gap-3 bottom-4 inset-x-0',
+                                        active: 'bg-red-700 dark:bg-red-600', 
+                                        base: 'w-2 h-2 sm:w-3 sm:h-3'
+                                    },
+                                    default: {
+                                        prevButton: {
+                                            class: 'p-1.5 sm:p-2'
+                                        },
+                                        nextButton: {
+                                            class: 'p-1.5 sm:p-2'
+                                        }
+                                    }
+                                }"
                                 class="rounded-lg overflow-hidden"
                                 indicators
                                 arrows>
@@ -222,7 +237,8 @@
                         </div>
                     </div>
                     <h2 
-                        class="text-md sm:text-lg font-semibold uppercase py-3">
+                        class="text-md sm:text-lg font-semibold uppercase py-3"
+                         v-if="techology && techology.length > 0">
                         {{ t('technology') }}
                     </h2>
                     <div 
@@ -298,6 +314,26 @@
                             </u-button>
                         </div>
                     </div>
+                    <div 
+                        class="flex flex-col items-center justify-center gap-y-2" 
+                        v-if="videoDemo && videoDemo !== ''">
+                        <h2 
+                            class="text-md sm:text-lg font-semibold uppercase py-2">
+                            {{ t('demoProject') }}
+                        </h2>
+                        <div 
+                            class="w-full max-w-3xl mx-auto rounded-lg overflow-hidden shadow-lg">
+                            <div 
+                                class="relative w-full pb-[56.25%]">
+                                <iframe
+                                    class="absolute top-0 left-0 w-full h-full rounded-lg"
+                                    :src="videoDemo"
+                                    allow="autoplay"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </u-modal>
@@ -332,6 +368,7 @@ const props = withDefaults(
         viewProjectLink?: string;
         gitHubLink?: string,
         demoImage?: string[]
+        videoDemo?: string
     }>(),
     {
         image: "N/A",
@@ -339,7 +376,8 @@ const props = withDefaults(
         title: "N/A",
         detail: "N/A",
         viewProjectLink: "",
-        gitHubLink: ""
+        gitHubLink: "",
+        videoDemo: ""
     }
 );
 

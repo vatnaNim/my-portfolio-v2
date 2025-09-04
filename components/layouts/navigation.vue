@@ -2,7 +2,7 @@
     <nav
         class="w-full h-[10vh] flex items-center justify-between px-6 sticky top-0 z-50 backdrop-blur-md bg-gray-400/20 border-b border-white/20 dark:bg-gray-800/30 dark:border-gray-700/40">
         <div>
-            <h1 class="text-lg md:text-xl lg:text-3xl tracking-wide logo text-black dark:text-gray-200 ">
+            <h1 class="text-xl lg:text-3xl tracking-wide logo text-black dark:text-gray-200 ">
                 Nim vatna
             </h1>
         </div>
@@ -274,6 +274,7 @@ const slideoverBar: Ref<boolean> = ref<boolean>(false);
 const toggleSlideover = (state: boolean): void => {
     slideoverBar.value = state;
 }
+
 const formattedDate = computed(() => {
     const today = new Date();
 
@@ -328,6 +329,10 @@ const scrollToSection = (id: string): void => {
         if (el) el.scrollIntoView({ behavior: 'smooth' })
     }
     selectedSection.value = id
+    if (window.innerWidth < 768)
+    {
+        slideoverBar.value = false;
+    }
 }
 
 defineExpose({
@@ -355,7 +360,6 @@ onMounted((): void => {
     );
     sections.forEach((section) => observer.observe(section));
 });
-
 
 </script>
 

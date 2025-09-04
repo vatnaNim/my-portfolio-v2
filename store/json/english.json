@@ -60,7 +60,7 @@
 	"education": "Education",
 	"certifications": "Certifications",
 	"royelUniversity": "Royal University of Phnom Penh",
-	"royelmajor": "Bachelor of Computer Science",
+	"royelmajor": "Bachelor of Science in Computer Science and Engineering",
 	"royelYear": "Graduated 2021 – 2025 (Generation 25)",
 	"toulTompong": "Toul Tumpong High School, Phnom Penh",
 	"toulTompongmajor": "High School",
@@ -184,5 +184,6 @@
 	"viewPortflio": "View Portflio",
 	"callMe": "Call Me",
 	"sayHelloTelegram": "Say hi to my Telegram!",
-	"lastestWork": "Latest Work"
+	"latestWork": "Latest Work",
+	"demoProject": "Demo Project Video"
 }	

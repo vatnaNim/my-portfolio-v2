@@ -155,7 +155,6 @@
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { 
     Building,
@@ -203,7 +202,7 @@ const exp = computed(() =>  [
            t('gtechResp7'),
            t('gtechResp8'),
         ],
-        certificates: ""
+        certificates: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004280/gtech_tyy9qo.jpg"
     },
     {
         id: 2, 
@@ -228,7 +227,7 @@ const exp = computed(() =>  [
           t('pedroResp6'),
           t('pedroResp7'),
         ],
-        certificates: "https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756131177/aeonmall_ekqqqr.jpg"
+        certificates: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004280/aeonmall_h6xcne.jpg"
     },
     {
         id: 3, 

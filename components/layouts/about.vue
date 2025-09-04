@@ -22,7 +22,7 @@
                 <div 
                     class="w-full h-[430px] sm:h-[460px] flex items-center justify-center overflow-hidden rounded-md">
                     <img
-                        src="https://res.cloudinary.com/dgbeqlbhx/image/upload/v1756828338/siemreap_image_bzokes.webp"
+                        src="https://res.cloudinary.com/doleyeec5/image/upload/v1757003568/siemreap_image_vwt7al.webp"
                         alt="profile"
                         class="max-w-full max-h-full object-scale-down hover:scale-105 transition-transform duration-500"
                     />

@@ -66,7 +66,7 @@
             <div 
                 class="flex-1 flex flex-col items-center lg:items-end gap-y-2 text-center lg:text-right">
                 <h3 
-                    class="text-md font-semibold">
+                    class="text-md font-semibold capitalize">
                     {{ t('latestWork') }}
                 </h3>  
                 <ul 
@@ -147,7 +147,6 @@
     </div>
 </template>
 
-
 <script setup lang="ts">
 import { 
     Facebook,
@@ -178,25 +177,25 @@ const media = [
         id: 1, 
         name: "Facebook",
         logo: Facebook,
-        link: ""
+        link: "https://www.facebook.com/share/1F7biHdp8V/?mibextid=wwXIfr"
     },
     {
         id: 2, 
         name: "Linkedin",
         logo: Linkedin,
-        link: ""
+        link: "http://linkedin.com/in/vatna-nim-6a2a74359"
     },
     {
         id: 3, 
         name: "Github",
         logo: Github,
-        link: "sd"
+        link: "https://github.com/vatnaNim"
     },
     {
         id: 4, 
         name: "X",
         logo: X,
-        link: ""
+        link: "https://x.com/robert_son12?s=21"
     }
 ]
 
