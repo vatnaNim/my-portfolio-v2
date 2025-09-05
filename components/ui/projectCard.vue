@@ -21,7 +21,7 @@
                 <div 
                     class="px-3 py-3 flex justify-end">
                     <span
-                        class="text-xs capitalize px-3 py-0.5 bg-gray-400/20 backdrop-blur-md text-black font-semibold border border-gray-400 rounded-md">
+                        class="text-xs capitalize px-3 py-0.5 bg-gray-400/20 backdrop-blur-md text-red-700 font-semibold border border-gray-400 rounded-md">
                         {{ workOn }}
                     </span>
                 </div>
@@ -47,7 +47,8 @@
                             :text="t('view') + ' Github'"
                             :popper="{ arrow: true, placement: 'top' }">
                             <a
-                                :href="gitHubLink" target="_blank">
+                                :href="gitHubLink" 
+                                target="_blank">
                                 <button
                                     class="p-2 rounded-full hover:bg-black hover:text-white duration-300">
                                     <Github 
@@ -269,8 +270,9 @@
                         class="text-xs sm:text-sm text-center text-gray-500 dark:text-gray-400 px-4 sm:px-8 md:px-16 lg:px-32">
                         {{ detail }}
                     </p>
-                    <div 
-                        v-if="gitHubLink" class="pb-10">
+                    <div  
+                        class="pb-10"
+                        v-if="viewProjectLink || gitHubLink">
                         <h2 
                             class="text-md sm:text-lg font-semibold uppercase py-2">
                             {{ t('followUs') }}
@@ -278,6 +280,7 @@
                         <div 
                             class="flex flex-wrap gap-x-2 sm:gap-x-3 justify-center">
                             <u-button
+                                v-if="viewProjectLink"
                                 target="_blank"
                                 :to="viewProjectLink"
                                 color="black"

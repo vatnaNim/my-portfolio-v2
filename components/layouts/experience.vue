@@ -29,100 +29,107 @@
                     <div
                         class="flex-1 flex justify-center md:justify-start"
                         :class="idx % 2 === 1 ? 'md:justify-start' : 'md:justify-end'">
-                        <div
-                            class="w-full max-w-md border border-gray-200 shadow-md rounded-md space-y-4 p-4
-                                transition duration-300 ease-in-out
-                                hover:shadow-xl hover:-translate-y-2
-                                hover:border-red-700 hover:bg-gray-50 dark:hover:bg-gray-900">
-                            <div 
-                                class="flex flex-col gap-y-1.5">
+                        <ClientOnly>
+                            <div
+                                class="w-full max-w-md border border-gray-200 shadow-md rounded-md space-y-4 p-4
+                                    transition duration-300 ease-in-out
+                                    hover:shadow-xl hover:-translate-y-2
+                                    hover:border-red-700 hover:bg-gray-50 dark:hover:bg-gray-900 aos-init aos-animate"
+                                    :data-aos="idx % 2 === 0 ? 'fade-right' : 'fade-left'"
+                                    data-aos-duration="1500"
+                                    data-aos-once="false"
+                                    data-aos-mirror="true"
+                                    data-aos-anchor-placement="top-bottom">
                                 <div 
-                                    class="flex items-center gap-x-4">
+                                    class="flex flex-col gap-y-1.5">
+                                    <div 
+                                        class="flex items-center gap-x-4">
+                                        <div 
+                                            class="flex items-center gap-x-2">
+                                            <Building 
+                                                class="w-5 h-5 text-red-700 dark:text-red-600" 
+                                            />
+                                            <span 
+                                                class="font-semibold text-sm sm:text-md uppercase text-gray-500">
+                                                {{ exp.companyName }}
+                                            </span>
+                                        </div>
+                                        <u-badge
+                                            :label="exp.shift"
+                                            variant="soft"
+                                            color="red"
+                                            size="sm"
+                                            :ui="{
+                                                size: {
+                                                    sm: 'text-[0.65rem] sm:text-xs'
+                                                }
+                                            }"
+                                        />
+                                    </div>
+                                    <h3 
+                                        class="text-base sm:text-lg font-semibold capitalize leading-5 sm:leading-tight">
+                                        {{ exp.position }}
+                                    </h3>
+                                    <div 
+                                        class="flex flex-wrap gap-x-3">
+                                        <div
+                                            class="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-600 gap-x-0.5">
+                                            <Date 
+                                                class="w-4 h-4" 
+                                            />
+                                            <span>
+                                                {{ exp.workTime }}
+                                            </span>
+                                        </div>
+                                        <div
+                                            class="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-600 gap-x-0.5">
+                                            <Location 
+                                                class="w-4 h-4" 
+                                            />
+                                            <span>
+                                                {{ exp.companyLocation }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p 
+                                    class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
+                                    {{ exp.description || '' }}
+                                </p>
+                                <div 
+                                    class="space-y-2">
+                                    <div
+                                        class="flex items-center gap-x-2 text-xs sm:text-sm text-black dark:text-white">
+                                        <Thunder
+                                            class="w-4 h-4 text-red-700 dark:text-red-600"
+                                        />
+                                        <span class="font-medium">
+                                            {{ t('keyAchi') }}
+                                        </span>
+                                    </div>
+                                    <div 
+                                        class="space-y-0 sm:space-y-0.5">
+                                        <ul
+                                            v-for="(achievement, i) in exp.keyAchievements"
+                                            :key="i"
+                                            class="list-disc list-inside text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium">
+                                            <li>{{ achievement }}</li>
+                                        </ul>
+                                    </div>
+                                </div> 
+                                <div 
+                                    class="flex flex-col gap-y-2">
                                     <div 
                                         class="flex items-center gap-x-2">
-                                        <Building 
-                                            class="w-5 h-5 text-red-700 dark:text-red-600" 
-                                        />
-                                        <span 
-                                            class="font-semibold text-sm sm:text-md uppercase text-gray-500">
-                                            {{ exp.companyName }}
-                                        </span>
-                                    </div>
-                                    <u-badge
-                                        :label="exp.shift"
-                                        variant="soft"
-                                        color="red"
-                                        size="sm"
-                                        :ui="{
-                                            size: {
-                                                sm: 'text-[0.65rem] sm:text-xs'
-                                            }
-                                        }"
-                                    />
-                                </div>
-                                <h3 
-                                    class="text-base sm:text-lg font-semibold capitalize leading-5 sm:leading-tight">
-                                    {{ exp.position }}
-                                </h3>
-                                <div 
-                                    class="flex flex-wrap gap-x-3">
-                                    <div
-                                        class="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-600 gap-x-0.5">
-                                        <Date 
-                                            class="w-4 h-4" 
-                                        />
-                                        <span>
-                                            {{ exp.workTime }}
-                                        </span>
-                                    </div>
-                                    <div
-                                        class="flex items-center text-xs sm:text-sm text-gray-500 dark:text-gray-600 gap-x-0.5">
-                                        <Location 
-                                            class="w-4 h-4" 
-                                        />
-                                        <span>
-                                            {{ exp.companyLocation }}
-                                        </span>
+                                        <div
+                                            class="text-xs sm:text-sm flex items-center text-red-700 dark:text-red-600 underline underline-offset-2 cursor-pointer hover:text-gray-600 hover:dark:text-gray-400"
+                                            @click="toggleModal(exp.id, true)">
+                                            {{ t('viewMoreBtn') }} →
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <p 
-                                class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
-                                {{ exp.description || '' }}
-                            </p>
-                            <div 
-                                class="space-y-2">
-                                <div
-                                    class="flex items-center gap-x-2 text-xs sm:text-sm text-black dark:text-white">
-                                    <Thunder
-                                        class="w-4 h-4 text-red-700 dark:text-red-600"
-                                    />
-                                    <span class="font-medium">
-                                        {{ t('keyAchi') }}
-                                    </span>
-                                </div>
-                                <div 
-                                    class="space-y-0 sm:space-y-0.5">
-                                    <ul
-                                        v-for="(achievement, i) in exp.keyAchievements"
-                                        :key="i"
-                                        class="list-disc list-inside text-gray-500 dark:text-gray-400 text-xs sm:text-sm font-medium">
-                                        <li>{{ achievement }}</li>
-                                    </ul>
-                                </div>
-                            </div> 
-                            <div 
-                                class="flex flex-col gap-y-2">
-                                <div 
-                                    class="flex items-center gap-x-2">
-                                    <div
-                                        class="text-xs sm:text-sm flex items-center text-red-700 dark:text-red-600 underline underline-offset-2 cursor-pointer hover:text-gray-600 hover:dark:text-gray-400"
-                                        @click="toggleModal(exp.id, true)">
-                                        {{ t('viewMoreBtn') }} →
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </ClientOnly>
                     </div>
                     <UDivider
                         orientation="vertical"
@@ -174,6 +181,8 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const { t, translations } = useTranslation();
 
@@ -202,7 +211,7 @@ const exp = computed(() =>  [
            t('gtechResp7'),
            t('gtechResp8'),
         ],
-        certificates: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004280/gtech_tyy9qo.jpg"
+        certificates: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004280/gtech_tyy9qo.jpg",
     },
     {
         id: 2, 
@@ -227,7 +236,7 @@ const exp = computed(() =>  [
           t('pedroResp6'),
           t('pedroResp7'),
         ],
-        certificates: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004280/aeonmall_h6xcne.jpg"
+        certificates: "https://res.cloudinary.com/doleyeec5/image/upload/v1757004280/aeonmall_h6xcne.jpg",
     },
     {
         id: 3, 
@@ -248,7 +257,7 @@ const exp = computed(() =>  [
             t('kiwiResp3'),
             t('kiwiResp4'),
         ],
-        certificates: ""
+        certificates: "",
     },
 ])
 
@@ -259,6 +268,20 @@ const toggleModal = (id: any | null, state: boolean): void => {
     modalId.value = id;
     openModal.value = state;
 }
+
+onMounted((): void => {
+    AOS.init({
+        duration: 1500, 
+        once: false,    
+        mirror: true,
+        anchorPlacement: 'top-bottom',  
+    });
+});
+
+onBeforeUnmount((): void => {
+    AOS.refresh(); 
+});
+
 </script>
 
 

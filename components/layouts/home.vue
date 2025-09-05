@@ -1,8 +1,13 @@
 <template>
     <div
-        class="w-full min-h-full md:min-h-[90vh] px-4 md:px-8 flex flex-col-reverse md:flex-row gap-y-3 sm:gap-y-8 md:gap-y-0">
+        class="w-full min-h-full lg:min-h-[90vh] px-4 md:px-8 flex flex-col-reverse md:flex-row gap-y-3 sm:gap-y-8 md:gap-y-0 mb-8 sm:mb-12 lg:mb-0">
         <div 
-            class="w-full md:min-w-[50%] flex flex-col justify-start items-center md:items-start gap-y-2 md:gap-y-4 mt-0 md:pt-8">
+            class="w-full md:min-w-[50%] flex flex-col justify-start items-center md:items-start gap-y-3 md:gap-y-4 mt-0 md:pt-8 aos-init aos-animate"
+            data-aos="fade-right"
+            data-aos-duration="1500"
+            data-aos-once="false"
+            data-aos-mirror="true"
+            data-aos-anchor-placement="top-bottom">
             <UBadge 
                 variant="solid"
                 color="gray"
@@ -99,7 +104,7 @@
                 </div>
             </div>
             <div 
-                class="">
+                class="pt-2 sm:pt-0">
                 <div class="flex items-center gap-x-1 lg:gap-x-2">
                     <u-tooltip
                         :text="t('callMe')"
@@ -234,7 +239,12 @@
             </div>
         </div>
         <div 
-            class="w-full md:min-w-[50%] flex justify-center items-center perspective-[1200px]">
+            class="w-full md:min-w-[50%] flex justify-center items-center perspective-[1200px] aos-init aos-animate"
+            data-aos="fade-left"
+            data-aos-duration="1500"
+            data-aos-once="false"
+            data-aos-mirror="true"
+            data-aos-anchor-placement="top-bottom">
             <div 
                 class="animated-card relative w-[90vw] max-w-[300px] sm:w-[300px] h-[400px] sm:h-[400px] rounded-2xl overflow-hidden shadow-2xl group mx-auto">
                 <img
@@ -280,7 +290,6 @@ import {
     Telegram,
     Linkedin,
     Download,
-    LongArrow,
     Location,
     Chat,
     Experience,
@@ -293,6 +302,8 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const { t,translations } = useTranslation();
 const mySocialMedia = [
@@ -342,6 +353,19 @@ const callMe = (): void => {
     const phoneNumber = "+85595872770";
     window.location.href = `tel:${phoneNumber}`
 }
+
+onMounted((): void => {
+    AOS.init({
+        duration: 1500, 
+        once: false,    
+        mirror: true,
+        anchorPlacement: 'top-bottom',  
+    });
+});
+
+onBeforeUnmount((): void => {
+    AOS.refresh();
+});
 
 </script>
 

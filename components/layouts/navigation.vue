@@ -85,7 +85,7 @@
                 </u-button>
             </u-tooltip>
             <u-tooltip
-                :text="t('menu')"
+                :text="t('navigation')"
                 :popper="{
                     placement: 'bottom',
                     offset: [0, 8]
@@ -127,7 +127,7 @@
                     class="h-14 flex items-center justify-between px-2 border-b border-gray-500 dark:border-gray-400">
                     <h2
                         class="text-md sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        {{ translations.language === 'en' ? 'Quick Navigation' : 'ការរុករករហ័ស' }}
+                        {{ t('navigation') }}
                     </h2>
                     <u-tooltip
                         text="bar"

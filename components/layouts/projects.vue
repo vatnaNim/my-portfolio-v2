@@ -17,21 +17,29 @@
         </div>
         <div
             class="max-w-full flex justify-center ">
-            <div 
-                class="w-[1000px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 px-4 sm:px-0">
-                <ProjectCard
-                    v-for="(item, idx) in project.slice(0, 6)"  
-                    :key="idx"
-                    :image="item.mainImage"
-                    :title="item.title"
-                    :detail="item.detail"
-                    :work-on="item.workingOn"  
-                    :git-hub-link="item.gitHubLink"
-                    :demo-image="item.demoImage"
-                    :techology="item.techology"
-                    :video-demo="item.videoDemo"       
-                />
-            </div>
+            <ClientOnly>
+                <div 
+                    class="w-[1000px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 px-4 sm:px-0 aos-init aos-animate">
+                    <ProjectCard
+                        v-for="(item, idx) in project.slice(0, 6)"  
+                        :key="idx"
+                        :image="item.mainImage"
+                        :title="item.title"
+                        :detail="item.detail"
+                        :work-on="item.workingOn"  
+                        :git-hub-link="item.gitHubLink"
+                        :demo-image="item.demoImage"
+                        :techology="item.techology"
+                        :video-demo="item.videoDemo"
+                        data-aos="fade-up"
+                        data-aos-anchor-placement="top-bottom"
+                        data-aos-duration="1200"
+                        data-aos-once="false"
+                        data-aos-mirror="true" 
+                        data-aos-offset="100"     
+                    />
+                </div>
+            </ClientOnly>
         </div>
         <div    
             class="pt-0 sm:pt-2 md:pt-3 flex flex-col items-center gap-y-2 md:gap-y-4">
@@ -80,6 +88,8 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const { 
     translations, 
@@ -102,7 +112,7 @@ const project = computed(() => [
             "Nuxt UI",
             "Tailwind"
         ],
-        gitHubLink: "",
+        gitHubLink: "https://github.com/vatnaNim/my-portfolio-v2",
         domainLink: "https://vatna-portfolio.vercel.app/",
         demoImage: [
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757005089/Screenshot_2025-09-04_184013_wstnrm.png",
@@ -124,7 +134,7 @@ const project = computed(() => [
             "Material UI",
             "Tailwind"
         ],
-        gitHubLink: "fd",
+        gitHubLink: "https://github.com/vatnaNim/personal-portfolio",
         domainLink: "https://vatna-portfolio.vercel.app/",
         demoImage: [
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757005072/Screenshot_2025-09-04_184500_fmvv7m.png",
@@ -148,7 +158,7 @@ const project = computed(() => [
             "Typescript",
             "NuxtUi",
         ],
-        gitHubLink: "",
+        gitHubLink: "https://github.com/vatnaNim/Robert-Coffee-Front-end",
         domainLink: "",
         demoImage: [
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757005075/Screenshot_2025-09-04_185524_mvv6gh.png",
@@ -174,7 +184,7 @@ const project = computed(() => [
             "Laraval",
             "Mysql",
         ],
-        gitHubLink: "",
+        gitHubLink: "https://github.com/vatnaNim/Robert-Coffee-Back-end",
         domainLink: "",
         demoImage: [
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757005075/Screenshot_2025-09-04_185524_mvv6gh.png",
@@ -200,8 +210,8 @@ const project = computed(() => [
             "Tailwind",
             "Javascript",
         ],
-        gitHubLink: "",
-        domainLink: "",
+        gitHubLink: "https://github.com/vatnaNim/Starbuck",
+        domainLink: "https://starbuck-mu.vercel.app/",
         demoImage: [
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757006466/Screenshot_2025-05-20_060032_i9qme4.png",
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757006463/Screenshot_2025-05-20_060014_mplfqk.png"
@@ -222,7 +232,7 @@ const project = computed(() => [
             "Typescript",
             "Tailwind"
         ],
-        gitHubLink: "",
+        gitHubLink: "https://github.com/vatnaNim/Skin-care-Project",
         domainLink: "",
         demoImage: [
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757006472/Screenshot_2025-05-20_060405_d9saqg.png",
@@ -271,7 +281,20 @@ const project = computed(() => [
         ],
         videoDemo: "", 
     },
-])
+]);
+
+onMounted((): void => {
+    AOS.init({
+        duration: 1500, 
+        once: false,    
+        mirror: true,
+        anchorPlacement: 'top-bottom',  
+    });
+});
+
+onBeforeUnmount((): void => {
+    AOS.refresh(); 
+});
 </script>
 
 <style scoped>

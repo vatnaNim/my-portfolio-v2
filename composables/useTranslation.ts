@@ -39,8 +39,8 @@ export const useTranslation = () => {
         try {
             const parsed = JSON.parse(saved)
             if (parsed.language && parsed.language in langs) {
-            translations.value.language = parsed.language
-            translations.value.data = langs[parsed.language as Language]
+                translations.value.language = parsed.language
+                translations.value.data = langs[parsed.language as Language]
             }
         } catch {
             translations.value.language = 'en'

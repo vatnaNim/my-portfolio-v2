@@ -15,103 +15,144 @@
         </div>
         <div 
             class="flex flex-col lg:flex-row gap-y-3 lg:gap-y-0 gap-x-2 lg:gap-x-4">
-            <div 
-                class="flex flex-col gap-y-2 w-full lg:w-[50%]">
+            <ClientOnly>
                 <div 
-                    class="flex justify-center items-center">
-                    <UTabs 
-                        v-model="selectedTab"
-                        :items="tabTtems"
-                        
-                        :ui="{
-                            list: {
-                                width: 'w-52 sm:w-64',
-                                background: 'bg-gray-300 dark:bg-gray-800',
-                                padding: 'px-0.5 py-0.5 sm:py-1 sm:px-1 ',
-                                tab: {
-                                    active: 'bg-gray-900 dark:bg-gray-300 text-white dark:text-black',
-                                    size: 'text-[0.70rem] sm:text-sm',
-                                }
-                            },
-                        }">
-                        <template #icon="{ item, selected }">
-                            <UIcon 
-                                :name="item.icon" 
-                                class="w-4 h-4 flex-shrink-0 me-2" 
-                                :class="[selected && 'text-red-700 dark:text-red-600']" />
-                        </template>
-                    </UTabs>
-                </div>
-                <Transition
-                    appear
-                    mode="out-in"
-                    enter-active-class="transition duration-500 ease-out transform"
-                    enter-from-class="opacity-0 scale-75"
-                    enter-to-class="opacity-100 scale-105"
-                    leave-active-class="transition duration-400 ease-in transform"
-                    leave-from-class="opacity-100 scale-105"
-                    leave-to-class="opacity-0 scale-75">
+                    class="flex flex-col gap-y-2 w-full lg:w-[50%] aos-init aos-animate"
+                    data-aos="fade-up"
+                    data-aos-duration="1500"
+                    data-aos-once="false"
+                    data-aos-mirror="true"
+                    data-aos-anchor-placement="top-bottom">
                     <div 
-                        v-if="selectedTab === 0"
-                        class="border shadow-md rounded-md w-full px-4 py-3 space-y-3"
-                        :class="isSubmitting?'bg-gray-200 dark:bg-gray-800' : 'bg-white dark:bg-gray-900' ">
+                        class="flex justify-center items-center">
+                        <UTabs 
+                            v-model="selectedTab"
+                            :items="tabTtems"
+                            
+                            :ui="{
+                                list: {
+                                    width: 'w-52 sm:w-64',
+                                    background: 'bg-gray-300 dark:bg-gray-800',
+                                    padding: 'px-0.5 py-0.5 sm:py-1 sm:px-1 ',
+                                    tab: {
+                                        active: 'bg-gray-900 dark:bg-gray-300 text-white dark:text-black',
+                                        size: 'text-[0.70rem] sm:text-sm',
+                                    }
+                                },
+                            }">
+                            <template #icon="{ item, selected }">
+                                <UIcon 
+                                    :name="item.icon" 
+                                    class="w-4 h-4 flex-shrink-0 me-2" 
+                                    :class="[selected && 'text-red-700 dark:text-red-600']" />
+                            </template>
+                        </UTabs>
+                    </div>
+                    <Transition
+                        appear
+                        mode="out-in"
+                        enter-active-class="transition duration-500 ease-out transform"
+                        enter-from-class="opacity-0 scale-75"
+                        enter-to-class="opacity-100 scale-105"
+                        leave-active-class="transition duration-400 ease-in transform"
+                        leave-from-class="opacity-100 scale-105"
+                        leave-to-class="opacity-0 scale-75">
                         <div 
-                            class="space-y-4">
+                            v-if="selectedTab === 0"
+                            class="border shadow-md rounded-md w-full px-4 py-3 space-y-3"
+                            :class="isSubmitting?'bg-gray-200 dark:bg-gray-800' : 'bg-white dark:bg-gray-900' ">
                             <div 
-                                class="leading-6 sm:leading-3">
-                                <h4
-                                    class="text-md sm:text-lg font-semibold capitalize "
-                                    :class="isSubmitting? 'text-red-700 dark:text-red-600' : 'text-black dark:text-white'">
-                                    {{ isSubmitting? t('sendingEmail') : t('sendEmail') }}
-                                </h4>
-                                <p
-                                    class="text-xs text-gray-500">
-                                    {{ t('sendingpara') }}
-                                </p>
-                            </div>
-                            <UForm 
-                                :validate="validate" 
-                                :state="state" 
-                                class="space-y-2 md:space-y-3" 
-                                @submit="onSubmit">
+                                class="space-y-4">
                                 <div 
-                                    class="w-full flex gap-x-1 sm:gap-x-2">
-                                    <u-form-group
-                                        :label="t('nameCon')"
-                                        size="md"
-                                        :ui="{
-                                            base: 'font-semibold',
-                                            size: {
-                                                'md': 'text-xs sm:text-sm'
-                                            }
-                                        }"
-                                        required
-                                        class="shrink w-28 xs:w-40 sm:w-64">
-                                        <u-input
-                                            type="text"
-                                            name="fullname"
-                                            v-model="state.name"
-                                            :placeholder="t('namePlaceholder')"
-                                            size="sm"
-                                            :disabled="isSubmitting"
-                                            variant="outline"
-                                            :color="isSubmitting? 'red' : 'gray'"
-                                            required
+                                    class="leading-6 sm:leading-3">
+                                    <h4
+                                        class="text-md sm:text-lg font-semibold capitalize "
+                                        :class="isSubmitting? 'text-red-700 dark:text-red-600' : 'text-black dark:text-white'">
+                                        {{ isSubmitting? t('sendingEmail') : t('sendEmail') }}
+                                    </h4>
+                                    <p
+                                        class="text-xs text-gray-500">
+                                        {{ t('sendingpara') }}
+                                    </p>
+                                </div>
+                                <UForm 
+                                    :validate="validate" 
+                                    :state="state" 
+                                    class="space-y-2 md:space-y-3" 
+                                    @submit="onSubmit">
+                                    <div 
+                                        class="w-full flex gap-x-1 sm:gap-x-2">
+                                        <u-form-group
+                                            :label="t('nameCon')"
+                                            size="md"
                                             :ui="{
-                                                color:{
-                                                    gray:{
-                                                        outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
-                                                    }
-                                                },
+                                                base: 'font-semibold',
                                                 size: {
-                                                    'sm': 'text-xs sm:text-sm'
+                                                    'md': 'text-xs sm:text-sm'
                                                 }
                                             }"
-                                            class="caret-red-700"
-                                        />
-                                    </u-form-group>
+                                            required
+                                            class="shrink w-28 xs:w-40 sm:w-64">
+                                            <u-input
+                                                type="text"
+                                                name="fullname"
+                                                v-model="state.name"
+                                                :placeholder="t('namePlaceholder')"
+                                                size="sm"
+                                                :disabled="isSubmitting"
+                                                variant="outline"
+                                                :color="isSubmitting? 'red' : 'gray'"
+                                                required
+                                                :ui="{
+                                                    color:{
+                                                        gray:{
+                                                            outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
+                                                        }
+                                                    },
+                                                    size: {
+                                                        'sm': 'text-xs sm:text-sm'
+                                                    }
+                                                }"
+                                                class="caret-red-700"
+                                            />
+                                        </u-form-group>
+                                        <u-form-group
+                                            :label="t('email')"
+                                            size="md"
+                                            :ui="{
+                                                base: 'font-semibold',
+                                                size: {
+                                                    'md': 'text-xs sm:text-sm'
+                                                }
+                                            }"
+                                            required
+                                            class="flex-1">
+                                            <u-input
+                                                name="email"
+                                                type="email"
+                                                :disabled="isSubmitting"
+                                                v-model="state.email"
+                                                placeholder="your@gmail.com"
+                                                size="sm"
+                                                variant="outline"
+                                                :color="isSubmitting? 'red' : 'gray'"
+                                                required
+                                                :ui="{
+                                                    color:{
+                                                        gray:{
+                                                            outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
+                                                        }
+                                                    },
+                                                    size: {
+                                                        'sm': 'text-xs sm:text-sm'
+                                                    }
+                                                }"
+                                                class="caret-red-700"
+                                            />
+                                        </u-form-group>
+                                    </div>
                                     <u-form-group
-                                        :label="t('email')"
+                                        :label="t('subject')"
                                         size="md"
                                         :ui="{
                                             base: 'font-semibold',
@@ -122,14 +163,14 @@
                                         required
                                         class="flex-1">
                                         <u-input
-                                            name="email"
-                                            type="email"
+                                            name="subject"
+                                            v-model="state.subject"
                                             :disabled="isSubmitting"
-                                            v-model="state.email"
-                                            placeholder="your@gmail.com"
+                                            type="text"
+                                            :placeholder="t('subjectPlaceholder')"
                                             size="sm"
                                             variant="outline"
-                                            :color="isSubmitting? 'red' : 'gray'"
+                                            color="gray"
                                             required
                                             :ui="{
                                                 color:{
@@ -144,218 +185,191 @@
                                             class="caret-red-700"
                                         />
                                     </u-form-group>
-                                </div>
-                                <u-form-group
-                                    :label="t('subject')"
-                                    size="md"
-                                    :ui="{
-                                        base: 'font-semibold',
-                                        size: {
-                                            'md': 'text-xs sm:text-sm'
-                                        }
-                                    }"
-                                    required
-                                    class="flex-1">
-                                    <u-input
-                                        name="subject"
-                                        v-model="state.subject"
-                                        :disabled="isSubmitting"
-                                        type="text"
-                                        :placeholder="t('subjectPlaceholder')"
-                                        size="sm"
-                                        variant="outline"
-                                        color="gray"
-                                        required
-                                        :ui="{
-                                            color:{
-                                                gray:{
-                                                    outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
-                                                }
-                                            },
-                                            size: {
-                                                'sm': 'text-xs sm:text-sm'
-                                            }
-                                        }"
-                                        class="caret-red-700"
-                                    />
-                                </u-form-group>
-                                <u-form-group
-                                    :label="t('message')"
-                                    size="md"
-                                        :ui="{
-                                            base: 'font-semibold',
-                                            size: {
-                                                'md': 'text-xs sm:text-sm'
-                                            },
-                                        }"
-                                    required
-                                    class="flex-1">
-                                    <u-textarea
-                                        name="message"
-                                        :placeholder="t('messagePlaceholder')"
-                                        :disabled="isSubmitting"
-                                        :rows="3"
-                                        color="gray"
+                                    <u-form-group
+                                        :label="t('message')"
                                         size="md"
-                                        variant="outline"
-                                        v-model="state.message"
-                                        :ui="{
-                                            color:{
-                                                gray:{
-                                                    outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
+                                            :ui="{
+                                                base: 'font-semibold',
+                                                size: {
+                                                    'md': 'text-xs sm:text-sm'
+                                                },
+                                            }"
+                                        required
+                                        class="flex-1">
+                                        <u-textarea
+                                            name="message"
+                                            :placeholder="t('messagePlaceholder')"
+                                            :disabled="isSubmitting"
+                                            :rows="3"
+                                            color="gray"
+                                            size="md"
+                                            variant="outline"
+                                            v-model="state.message"
+                                            :ui="{
+                                                color:{
+                                                    gray:{
+                                                        outline: 'focus:ring-2 focus:ring-red-700 dark:focus:ring-red-600'
+                                                    }
+                                                },
+                                                size: {
+                                                    'md': 'text-xs sm:text-sm'
                                                 }
-                                            },
+                                            }"
+                                            class="caret-red-700"
+                                        />
+                                    </u-form-group>
+                                    <u-button
+                                        size="md"
+                                        color="black"
+                                        type="submit"
+                                        :ui="{
                                             size: {
                                                 'md': 'text-xs sm:text-sm'
                                             }
                                         }"
-                                        class="caret-red-700"
-                                    />
-                                </u-form-group>
-                                <u-button
-                                    size="md"
-                                    color="black"
-                                    type="submit"
-                                    :ui="{
-                                        size: {
-                                            'md': 'text-xs sm:text-sm'
-                                        }
-                                    }"
-                                    block
-                                    :disabled="isSubmitting">
-                                    <div class="flex items-center gap-x-2">
-                                        <span v-if="isSubmitting" class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                                        <Send v-else class="w-4 h-4" />
-                                        {{ isSubmitting ? t('sending') : t('sendMessage') }}
-                                    </div>
-                                </u-button>
-                            </UForm>
+                                        block
+                                        :disabled="isSubmitting">
+                                        <div class="flex items-center gap-x-2">
+                                            <span v-if="isSubmitting" class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                                            <Send v-else class="w-4 h-4" />
+                                            {{ isSubmitting ? t('sending') : t('sendMessage') }}
+                                        </div>
+                                    </u-button>
+                                </UForm>
+                            </div>
                         </div>
-                    </div>
-                    <div 
-                        v-else-if="selectedTab === 1"
-                        class="border shadow-md rounded-md w-full px-4 py-3 space-y-2 flex flex-col items-center justify-center">
-                        <h3 
-                            class="text-md sm:text-lg font-semibold text-gray-900 dark:text-gray-100">
-                            {{ t('supportMe') }}
-                        </h3>
-                        <p 
-                            class="text-sm text-gray-500 dark:text-gray-400 text-center leading-4 sm:leading-normal ">
-                            {{ t('contactTitle3') }}
-                        </p>
                         <div 
-                            class="w-64 overflow-hidden rounded-md shadow-md">
-
+                            v-else-if="selectedTab === 1"
+                            class="border shadow-md rounded-md w-full px-4 py-3 space-y-2 flex flex-col items-center justify-center">
+                            <h3 
+                                class="text-md sm:text-lg font-semibold text-gray-900 dark:text-gray-100">
+                                {{ t('supportMe') }}
+                            </h3>
+                            <p 
+                                class="text-sm text-gray-500 dark:text-gray-400 text-center leading-4 sm:leading-normal ">
+                                {{ t('contactTitle3') }}
+                            </p>
                             <div 
-                                v-if="qrLoading"
-                                class="flex justify-center items-center h-64">
-                                <Modal
-                                    class="w-8 h-8 text-red-700 dark:text-red-600"
+                                class="w-64 overflow-hidden rounded-md shadow-md">
+
+                                <div 
+                                    v-if="qrLoading"
+                                    class="flex justify-center items-center h-64">
+                                    <Modal
+                                        class="w-8 h-8 text-red-700 dark:text-red-600"
+                                    />
+                                </div>
+                                <img 
+                                    src="https://res.cloudinary.com/doleyeec5/image/upload/v1757004567/IMG_5829_xjlbpr.jpg" 
+                                    alt="ABA QR CODE"
+                                    class="w-full h-full"
+                                    @load="handleQrLoad"    
                                 />
                             </div>
-                            <img 
-                                src="https://res.cloudinary.com/doleyeec5/image/upload/v1757004567/IMG_5829_xjlbpr.jpg" 
-                                alt="ABA QR CODE"
-                                class="w-full h-full"
-                                @load="handleQrLoad"    
-                            />
+                        </div>
+                    </Transition>
+                </div>
+            </ClientOnly>
+            <ClientOnly>
+                <div 
+                    class="w-full lg:w-[50%] flex flex-col gap-y-3 sm:gap-y-4 aos-init aos-animate"
+                    data-aos="fade-up"
+                    data-aos-duration="1500"
+                    data-aos-once="false"
+                    data-aos-mirror="true"
+                    data-aos-anchor-placement="top-bottom">
+                    <div 
+                        class="border shadow-md rounded-md w-full px-4 py-3 space-y-3">
+                        <div 
+                            class="leading-6 sm:leading-4">
+                            <h4
+                                class="text-md sm:text-lg font-semibold text-black dark:text-white">
+                                {{ t('getInTouch') }}
+                            </h4>
+                            <p
+                                class="text-xs text-gray-500 dark:text-gray-400">
+                                {{ t('getInTouch2') }}
+                            </p>
+                        </div>
+                        <div 
+                            class="flex flex-col">
+                            <article
+                                v-for="(item) in information"
+                                :key="item.id"
+                                class="group flex items-center justify-between gap-x-4 py-2 px-3 rounded-lg cursor-pointer
+                                        transition-all duration-300
+                                        hover:bg-gray-100 hover:shadow-md hover:scale-[1.01]
+                                        dark:hover:bg-gray-800 dark:hover:shadow-lg"
+                                        :href="item.link || 'javascript:void(0)'" 
+                                        target="_blank"
+                                        @click.prevent="handleClick(item)">
+                                <div 
+                                    class="flex items-center gap-x-3">
+                                    <span>
+                                        <component
+                                            :is="item.icon"
+                                            class="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300"
+                                        />
+                                    </span>
+                                    <div 
+                                        class="leading-5">
+                                        <h4 class="text-md font-semibold text-gray-900 dark:text-gray-100">
+                                            {{ item.mediaName }}
+                                        </h4>
+                                        <p class="text-xs text-gray-500 dark:text-gray-400">
+                                            {{ item.mediaDetail }}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <ForwardArrow
+                                        class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 dark:text-gray-500 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300"
+                                    />
+                                </div>
+                            </article>
                         </div>
                     </div>
-                </Transition>
-            </div>
-            <div 
-                class="w-full lg:w-[50%] flex flex-col gap-y-3 sm:gap-y-4">
-                <div 
-                    class="border shadow-md rounded-md w-full px-4 py-3 space-y-3">
                     <div 
-                        class="leading-6 sm:leading-4">
-                        <h4
-                            class="text-md sm:text-lg font-semibold text-black dark:text-white">
-                            {{ t('getInTouch') }}
-                        </h4>
-                        <p
-                            class="text-xs text-gray-500 dark:text-gray-400">
-                            {{ t('getInTouch2') }}
-                        </p>
-                    </div>
-                    <div 
-                        class="flex flex-col">
-                        <article
-                            v-for="(item) in information"
-                            :key="item.id"
-                            class="group flex items-center justify-between gap-x-4 py-2 px-3 rounded-lg cursor-pointer
-                                    transition-all duration-300
-                                    hover:bg-gray-100 hover:shadow-md hover:scale-[1.01]
-                                    dark:hover:bg-gray-800 dark:hover:shadow-lg"
-                                    :href="item.link || 'javascript:void(0)'" 
+                        class="border shadow-md rounded-md w-full px-4 py-3 space-y-4">
+                        <div 
+                            class="leading-6 sm:leading-4">
+                            <h4
+                                class="text-md sm:text-lg font-semibold capitalize text-black dark:text-white">
+                                {{ t('connectWithMe') }}
+                            </h4>
+                            <p
+                                class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-4 sm:leading-normal">
+                                {{  t('connectWithMe2') }}
+                            </p>
+                        </div>
+                        <div    
+                            class="flex gap-x-3">
+                            <u-tooltip
+                                v-for="(item) in socalMedia"
+                                :text="item.name"
+                                :popper="{
+                                    placement: 'top',
+                                    arrow: true
+                                }">
+                                <a
                                     target="_blank"
-                                    @click.prevent="handleClick(item)">
-                            <div 
-                                class="flex items-center gap-x-3">
-                                <span>
-                                    <component
-                                        :is="item.icon"
-                                        class="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300"
+                                    :href="item.link"
+                                    class="flex items-center justify-center rounded-full transition-all duration-200
+                                        hover:scale-110 "
+                                    :class="[
+                                        item.color,
+                                        'dark:brightness-90 dark:hover:brightness-110'
+                                    ]">
+                                    <component 
+                                        :is="item.icon" 
+                                        class="w-5 h-5" 
                                     />
-                                </span>
-                                <div 
-                                    class="leading-5">
-                                    <h4 class="text-md font-semibold text-gray-900 dark:text-gray-100">
-                                        {{ item.mediaName }}
-                                    </h4>
-                                    <p class="text-xs text-gray-500 dark:text-gray-400">
-                                        {{ item.mediaDetail }}
-                                    </p>
-                                </div>
-                            </div>
-                            <div>
-                                <ForwardArrow
-                                    class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 dark:text-gray-500 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors duration-300"
-                                />
-                            </div>
-                        </article>
+                                </a>
+                            </u-tooltip>
+                        </div>
                     </div>
                 </div>
-                <div 
-                    class="border shadow-md rounded-md w-full px-4 py-3 space-y-4">
-                    <div 
-                        class="leading-6 sm:leading-4">
-                        <h4
-                            class="text-md sm:text-lg font-semibold capitalize text-black dark:text-white">
-                            {{ t('connectWithMe') }}
-                        </h4>
-                        <p
-                            class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 leading-4 sm:leading-normal">
-                            {{  t('connectWithMe2') }}
-                        </p>
-                    </div>
-                    <div    
-                        class="flex gap-x-3">
-                        <u-tooltip
-                            v-for="(item) in socalMedia"
-                            :text="item.name"
-                            :popper="{
-                                placement: 'top',
-                                arrow: true
-                            }">
-                            <a
-                                target="_blank"
-                                :href="item.link"
-                                class="flex items-center justify-center rounded-full transition-all duration-200
-                                    hover:scale-110 "
-                                :class="[
-                                    item.color,
-                                    'dark:brightness-90 dark:hover:brightness-110'
-                                ]">
-                                <component 
-                                    :is="item.icon" 
-                                    class="w-5 h-5" 
-                                />
-                            </a>
-                        </u-tooltip>
-                    </div>
-                </div>
-            </div>
+            </ClientOnly>
         </div>
         <MessageAlert
             :open="alert.open"
@@ -391,6 +405,8 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const { 
     translations,
@@ -557,6 +573,19 @@ const onSubmit = async (event: FormSubmitEvent<any>): Promise<void> => {
         isSubmitting.value = false; 
     });
 };
+
+onMounted((): void => {
+    AOS.init({
+        duration: 1500, 
+        once: false,    
+        mirror: true,
+        anchorPlacement: 'top-bottom',  
+    });
+});
+
+onBeforeUnmount((): void => {
+    AOS.refresh(); 
+});
 
 </script>
 

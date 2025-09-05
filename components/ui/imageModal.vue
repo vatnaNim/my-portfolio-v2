@@ -44,21 +44,25 @@
             <div 
                 class="flex justify-center items-center min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] relative">
                 <div 
-                    v-if="loading" class="absolute flex items-center justify-center">
+                    v-if="loading" 
+                    class=" flex items-center justify-center">
                     <svg class="animate-spin h-8 w-8 sm:h-10 sm:w-10 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
                     </svg>
                 </div>
-                <img
-                    v-if="selected?.imageUrl"
-                    :src="selected.imageUrl"
-                    :alt="selected.title"
-                    class="w-full max-h-[70vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain"
-                    @load="handleLoad"
-                    @error="handleError"
-                    v-show="!loading"
+                <div 
+                    class=""
+                    v-if="selected?.imageUrl">
+                    <img
+                        :src="selected.imageUrl"
+                        :alt="selected.title"
+                        class="w-full max-h-[70vh] sm:max-h-[75vh] md:max-h-[80vh] object-contain"
+                        @load="handleLoad"
+                        @error="handleError"
+                        v-show="!loading"
                 />
+                </div>
             </div>
         </UCard>
     </UModal>

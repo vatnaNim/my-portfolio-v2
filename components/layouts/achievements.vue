@@ -25,44 +25,51 @@
                 </h3>
                 <div 
                     class="flex flex-col gap-y-2 md:gap-y-3 mt-3">
-                    <div 
-                        class="relative bg-gray-500/10 dark:bg-white/5 backdrop-blur-sm shadow-lg  flex flex-1 flex-col sm:flex-row items-center gap-y-1 sm:gap-x-3 lg:gap-x-4 py-3 px-3 lg:px-4 rounded-lg border transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer"
-                        v-for="(item, idx) in edcationDb"
-                        :key="idx">
-                        <span 
-                            class="absolute -top-2 -left-2 w-4 h-4 rounded-full bg-white
-                                flex items-center justify-center shadow-md border border-gray-300 dark:border-gray-700">
-                            <Dot class="text-red-700 dark:text-red-600"/>
-                        </span>
+                    <ClientOnly>
                         <div 
-                            v-if="item.logo"
-                            class="w-16 h-16 lg:w-20 sm:h-20 flex-shrink-0">
-                            <img
-                                :src="item.logo"
-                                :alt="item.schoolName"
-                                class="w-full h-full object-scale-down"
-                            />
+                            class="relative bg-gray-500/10 dark:bg-white/5 backdrop-blur-sm shadow-lg  flex flex-1 flex-col sm:flex-row items-center gap-y-1 sm:gap-x-3 lg:gap-x-4 py-3 px-3 lg:px-4 rounded-lg border transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] cursor-pointer aos-init aos-animate"
+                            v-for="(item, idx) in edcationDb"
+                            :key="idx"
+                            data-aos="fade-up"
+                            data-aos-anchor-placement="top-bottom"
+                            data-aos-duration="1500"
+                            data-aos-once="false"
+                            data-aos-mirror="true">
+                            <span 
+                                class="absolute -top-2 -left-2 w-4 h-4 rounded-full bg-white
+                                    flex items-center justify-center shadow-md border border-gray-300 dark:border-gray-700">
+                                <Dot class="text-red-700 dark:text-red-600"/>
+                            </span>
+                            <div 
+                                v-if="item.logo"
+                                class="w-16 h-16 lg:w-20 sm:h-20 flex-shrink-0">
+                                <img
+                                    :src="item.logo"
+                                    :alt="item.schoolName"
+                                    class="w-full h-full object-scale-down"
+                                />
+                            </div>
+                            <div
+                                v-else 
+                                class="md:w-16 md:h-16 w-14 h-14   rounded-full flex justify-center items-center text-white bg-gray-900">
+                                <NoImage
+                                    class="sm:w-6 sm:h-6 w-5 h-5 object-fill"
+                                />
+                            </div>
+                            <div
+                                class="text-center sm:text-start">
+                                <h3 class="font-medium text-md sm:text-lg">
+                                    {{ item.schoolName }}
+                                </h3>
+                                <p class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-1">
+                                    {{ item.year }}
+                                </p>
+                                <p class="text-xs sm:text-sm text-gray-500 italic">
+                                    {{ item.degree }}
+                                </p>
+                            </div>
                         </div>
-                        <div
-                            v-else 
-                            class="md:w-16 md:h-16 w-14 h-14   rounded-full flex justify-center items-center text-white bg-gray-900">
-                            <NoImage
-                                class="sm:w-6 sm:h-6 w-5 h-5 object-fill"
-                            />
-                        </div>
-                        <div
-                            class="text-center sm:text-start">
-                            <h3 class="font-medium text-md sm:text-lg">
-                                {{ item.schoolName }}
-                            </h3>
-                            <p class="text-xs sm:text-sm text-gray-500 mt-2 sm:mt-1">
-                                {{ item.year }}
-                            </p>
-                            <p class="text-xs sm:text-sm text-gray-500 italic">
-                                {{ item.degree }}
-                            </p>
-                        </div>
-                    </div>
+                    </ClientOnly>
                 </div>
             </div>
             <div 
@@ -83,62 +90,69 @@
                 </h3>
                 <div 
                     class="flex flex-col gap-y-2 sm:gap-y-4 mt-2 sm:mt-4">
-                    <div 
-                        class="relative bg-gray-500/10 dark:bg-white/5 backdrop-blur-sm shadow-lg 
-                            px-5 py-3 flex flex-col  rounded-lg border transition-all duration-300 
-                            hover:shadow-2xl hover:scale-[1.02] cursor-pointer items-center sm:items-start"
-                            v-for="(cert, idx) in paginatedCertificates"
-                            :key="idx">
-                        <span 
-                            class="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-yellow-400 
-                                flex items-center justify-center shadow-md border border-gray-300 dark:border-gray-700">
-                            🏅
-                        </span>
-                        <h4 
-                            class="text-center sm:text-start font-semibold text-md sm:text-lg text-gray-800 dark:text-gray-200 pb-1">
-                            {{ cert.title }}
-                        </h4>
+                    <ClientOnly>
                         <div 
-                            class="text-center sm:text-start">
-                            <p 
-                                class="text-xs sm:text-sm text-gray-600 dark:text-gray-500 ">
-                                {{ cert.detail }}
-                            </p>
-                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-500 italic">
-                                {{ cert.year }}
-                            </p>
+                            class="relative bg-gray-500/10 dark:bg-white/5 backdrop-blur-sm shadow-lg 
+                                px-5 py-3 flex flex-col  rounded-lg border transition-all duration-300 
+                                hover:shadow-2xl hover:scale-[1.02] cursor-pointer items-center sm:items-start aos-init aos-animate"
+                                v-for="(cert, idx) in paginatedCertificates"
+                                :key="idx"
+                                data-aos="fade-up"
+                                data-aos-anchor-placement="top-bottom"
+                                data-aos-duration="1500"
+                                data-aos-once="false"
+                                data-aos-mirror="true">
+                            <span 
+                                class="absolute -top-2 -left-2 w-5 h-5 rounded-full bg-yellow-400 
+                                    flex items-center justify-center shadow-md border border-gray-300 dark:border-gray-700">
+                                🏅
+                            </span>
+                            <h4 
+                                class="text-center sm:text-start font-semibold text-md sm:text-lg text-gray-800 dark:text-gray-200 pb-1">
+                                {{ cert.title }}
+                            </h4>
+                            <div 
+                                class="text-center sm:text-start">
+                                <p 
+                                    class="text-xs sm:text-sm text-gray-600 dark:text-gray-500 ">
+                                    {{ cert.detail }}
+                                </p>
+                                <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-500 italic">
+                                    {{ cert.year }}
+                                </p>
+                            </div>
+                            <div 
+                                v-if="cert.imageUrl"
+                                class="mt-1 sm:mt-2 flex gap-x-1 md:gap-x-2">
+                                <u-button
+                                    size="sm"
+                                    color="black"
+                                    :key="cert.id"
+                                    @click="viewCert(cert)">
+                                    <Eye 
+                                        class="md:w-5 md:h-5 h-4 w-4"
+                                    />
+                                    <span 
+                                        class="text-xs md:text-sm tracking-wide">
+                                        {{ t('view') }}
+                                    </span>
+                                </u-button>
+                                <u-button
+                                    size="sm"
+                                    color="red"
+                                    :to="cert.imageUrl"
+                                    target="_blank">
+                                    <Pdf 
+                                        class="md:w-5 md:h-5 h-4 w-4"
+                                    />
+                                    <span   
+                                        class="text-xs md:text-sm tracking-wide">
+                                        PDF
+                                    </span>
+                                </u-button>
+                            </div>
                         </div>
-                        <div 
-                            v-if="cert.imageUrl"
-                            class="mt-1 sm:mt-2 flex gap-x-1 md:gap-x-2">
-                            <u-button
-                                size="sm"
-                                color="black"
-                                :key="cert.id"
-                                @click="viewCert(cert)">
-                                <Eye 
-                                    class="md:w-5 md:h-5 h-4 w-4"
-                                />
-                                <span 
-                                    class="text-xs md:text-sm tracking-wide">
-                                    {{ t('view') }}
-                                </span>
-                            </u-button>
-                            <u-button
-                                size="sm"
-                                color="red"
-                                :to="cert.imageUrl"
-                                target="_blank">
-                                <Pdf 
-                                    class="md:w-5 md:h-5 h-4 w-4"
-                                />
-                                <span   
-                                    class="text-xs md:text-sm tracking-wide">
-                                    PDF
-                                </span>
-                            </u-button>
-                        </div>
-                    </div>
+                    </ClientOnly>
                     <div 
                         class="mt-2 flex justify-end">
                         <UPagination
@@ -219,6 +233,8 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const { translations, t } = useTranslation();
 
@@ -298,6 +314,19 @@ const viewCert = (cert: any): void => {
     selectedCert.value = cert;
     openViewmodal.value = true; 
 };
+
+onMounted((): void => {
+    AOS.init({
+        duration: 1500, 
+        once: false,    
+        mirror: true,
+        anchorPlacement: 'top-bottom',  
+    });
+});
+
+onBeforeUnmount((): void => {
+    AOS.refresh(); 
+});
 </script>
 
 <style scoped>
