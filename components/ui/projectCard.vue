@@ -327,12 +327,24 @@
                         <div 
                             class="w-full max-w-3xl mx-auto rounded-lg overflow-hidden shadow-lg">
                             <div 
+                                v-if="loading"
+                                class="flex flex-col gap-y-2 justify-center items-center h-[94px]">
+                                <Modal
+                                    class="w-8 h-8"
+                                />
+                                <span
+                                    class="text-sm md:text-md">
+                                    {{ t('projectDemo') }}
+                                </span>
+                            </div>
+                            <div 
                                 class="relative w-full pb-[56.25%]">
                                 <iframe
                                     class="absolute top-0 left-0 w-full h-full rounded-lg"
                                     :src="videoDemo"
                                     allow="autoplay"
-                                    allowfullscreen>
+                                    allowfullscreen
+                                    @load="loading = false">
                                 </iframe>
                             </div>
                         </div>
@@ -355,6 +367,7 @@ import {
 import { 
     useTranslation 
 } from '@/composables/useTranslation';
+import { Modal } from '../loadings';
 
 const { 
     translations, 
@@ -384,15 +397,19 @@ const props = withDefaults(
     }
 );
 
-
-
 const openModal: Ref<boolean> = ref<boolean>(false);
+const loading: Ref<boolean> = ref<boolean>(true);
+const carouselRef = ref<any>();
 
 const toggleModal = (state: boolean): void => {
     openModal.value = state;
 }
 
-const carouselRef = ref();
+onMounted((): void => {
+    setTimeout((): void => {
+        loading.value = false
+    }, 10000)
+})
 
 onMounted((): void => {
     setInterval((): void => {

@@ -146,7 +146,7 @@ const project = computed(() => [
             "Tailwind"
         ],
         gitHubLink: "https://github.com/vatnaNim/personal-portfolio",
-        domainLink: "https://vatna-portfolio.vercel.app/",
+        domainLink: "https://vatna-portfoliov1.vercel.app/",
         demoImage: [
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757005072/Screenshot_2025-09-04_184500_fmvv7m.png",
             "https://res.cloudinary.com/doleyeec5/image/upload/v1757005074/Screenshot_2025-09-04_184514_aoe2zx.png",
