@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-full min-h-[90vh] px-4 md:px-8 space-y-3">
+        class="w-full min-h-[90vh] px-4 py-4 md:py-8 pt-0 space-y-3">
         <h2
             class="text-red-700 dark:text-red-600 lg:text-start text-center"
             :class="translations.language === 'en'? 'logo text-2xl sm:text-3xl lg:text-4xl font-medium  tracking-wide' : 'font-semibold text-2xl md:text-3xl'">

@@ -56,7 +56,7 @@
                                 <span class="font-semibold">JavaScript</span>, 
                                 <span class="font-semibold">TypeScript</span>, 
                                 {{ t('and') }}
-                                <span class="font-semibold">Nuxt.js</span>។ 
+                                <span class="font-semibold">Nuxt.js</span>{{ t('dot') }} 
                                 {{ t('paragraphAbout2') }}
                                 <span class="font-semibold">RESTful APIs</span> 
                                 {{ t('and') }}

@@ -49,9 +49,9 @@ export const useTranslation = () => {
     }
 })
 
-return {
-    translations,
-    toggleLanguage,
-    t
-}
+    return {
+        translations,
+        toggleLanguage,
+        t
+    }
 }

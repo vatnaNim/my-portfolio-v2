@@ -28,7 +28,7 @@
             </div>
 
             <UTooltip
-                text="top"
+                :text="t('topBtn')"
                 :popper="{ arrow: true }"
                 v-if="showButton"
                 class="fixed right-3 bottom-2">
@@ -59,6 +59,11 @@ import {
 import { 
     Page 
 } from '~/components/loadings'
+import { 
+    useTranslation 
+} from '@/composables/useTranslation'
+
+const { t } = useTranslation()
 
 const showButton: Ref<boolean> = ref<boolean>(false)
 const isLoading: Ref<boolean> = ref<boolean>(true);

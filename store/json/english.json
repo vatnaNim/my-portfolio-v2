@@ -187,5 +187,7 @@
 	"sayHelloTelegram": "Say hi to my Telegram!",
 	"latestWork": "Latest Work",
 	"demoProject": "Demo Project Video",
-	"projectDemo": "Please wait the video is loading..."
+	"projectDemo": "Please wait the video is loading...",
+	"topBtn": "Back to the top",
+	"dot": "."
 }	
